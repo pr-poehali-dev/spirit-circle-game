@@ -24,7 +24,7 @@ const Index = () => {
         );
         
         // Если кликнули близко к центру где черт
-        if (distance < 40) {
+        if (distance < 80) {
           setDevilCaught(true);
           setIsDevilMoving(false);
           return;
@@ -50,7 +50,7 @@ const Index = () => {
 
   const moveDevil = () => {
     const angle = Math.random() * 2 * Math.PI;
-    const radius = 80 + Math.random() * 40; // Случайное расстояние от центра
+    const radius = 160 + Math.random() * 80; // Случайное расстояние от центра
     const x = 50 + (radius * Math.cos(angle)) / 2;
     const y = 50 + (radius * Math.sin(angle)) / 2;
     
@@ -85,7 +85,7 @@ const Index = () => {
         {/* Основной круг */}
         <div 
           ref={circleRef}
-          className="relative w-96 h-96 bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
+          className="relative w-[768px] h-[768px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
           onClick={handleCircleClick}
           style={{
             background: devilCaught 
@@ -95,7 +95,7 @@ const Index = () => {
         >
           {/* Внешний обод с алфавитом */}
           <div 
-            className="absolute inset-2 rounded-full border-2 border-gray-800 animate-spin"
+            className="absolute inset-4 rounded-full border-4 border-gray-800 animate-spin"
             style={{
               animation: 'spin 20s linear infinite'
             }}
@@ -105,12 +105,12 @@ const Index = () => {
               return (
                 <div
                   key={letter}
-                  className="absolute text-lg font-bold text-gray-800 font-['Rubik']"
+                  className="absolute text-2xl font-bold text-gray-800 font-['Rubik']"
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-170px) rotate(-${angle}deg)`,
-                    transformOrigin: '0 170px'
+                    transform: `rotate(${angle}deg) translateY(-340px) rotate(-${angle}deg)`,
+                    transformOrigin: '0 340px'
                   }}
                 >
                   {letter}
@@ -121,7 +121,7 @@ const Index = () => {
 
           {/* Внутренний обод с цифрами */}
           <div 
-            className="absolute inset-8 rounded-full border-2 border-gray-600"
+            className="absolute inset-16 rounded-full border-4 border-gray-600"
             style={{
               animation: 'spin 15s linear infinite reverse'
             }}
@@ -131,12 +131,12 @@ const Index = () => {
               return (
                 <div
                   key={number}
-                  className="absolute text-xl font-bold text-gray-600 font-['Rubik']"
+                  className="absolute text-3xl font-bold text-gray-600 font-['Rubik']"
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-120px) rotate(${angle}deg)`,
-                    transformOrigin: '0 120px'
+                    transform: `rotate(${angle}deg) translateY(-240px) rotate(${angle}deg)`,
+                    transformOrigin: '0 240px'
                   }}
                 >
                   {number}
