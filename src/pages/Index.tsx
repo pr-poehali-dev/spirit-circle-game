@@ -191,6 +191,41 @@ const Index = () => {
             />
           </div>
 
+          {/* Длинный хвост с наконечником */}
+          <div className="absolute left-1/2 top-1/2 w-0 h-0">
+            <div 
+              className="absolute origin-top"
+              style={{
+                left: '25px',
+                top: '40px',
+                transformOrigin: 'top center',
+                animation: 'swayTail 3s ease-in-out infinite'
+              }}
+            >
+              {/* Основание хвоста */}
+              <div 
+                className="bg-gray-800"
+                style={{
+                  width: '8px',
+                  height: '220px',
+                  borderRadius: '4px 4px 2px 2px'
+                }}
+              ></div>
+              
+              {/* Наконечник хвоста */}
+              <div 
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2"
+                style={{
+                  width: '0',
+                  height: '0',
+                  borderLeft: '6px solid transparent',
+                  borderRight: '6px solid transparent',
+                  borderTop: '12px solid #dc2626'
+                }}
+              ></div>
+            </div>
+          </div>
+
           {/* Счетчик кликов поверх изображения */}
           {!showDevil && (
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 translate-y-16 z-10">

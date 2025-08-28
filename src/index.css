@@ -58,6 +58,17 @@
   }
 }
 
+/* Анимация покачивания хвоста */
+@keyframes swayTail {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
