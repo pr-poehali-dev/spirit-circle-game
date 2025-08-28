@@ -210,6 +210,22 @@ const Index = () => {
           )}
         </div>
 
+        {/* Красная стрелка над желтым пламенем */}
+        <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2">
+          <div 
+            className="absolute"
+            style={{
+              left: '-5px',
+              top: '-90px',
+              color: '#dc2626'
+            }}
+          >
+            <svg width="10" height="15" viewBox="0 0 10 15" fill="currentColor">
+              <path d="M5 0 L9 10 L5 8 L1 10 Z" />
+            </svg>
+          </div>
+        </div>
+
         {/* Результат */}
         {devilCaught && (
           <div className="text-center mt-8 animate-fade-in">
