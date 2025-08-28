@@ -85,7 +85,7 @@ const Index = () => {
         {/* Основной круг */}
         <div 
           ref={circleRef}
-          className="relative w-[728px] h-[728px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
+          className="relative w-[688px] h-[688px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
           onClick={handleCircleClick}
           style={{
             background: devilCaught 
