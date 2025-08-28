@@ -151,12 +151,12 @@ const Index = () => {
             })}
           </div>
 
-          {/* Черт */}
+          {/* Реалистичный черт */}
           {showDevil && (
             <div
-              className={`absolute text-6xl transition-all duration-500 z-10 ${
-                isDevilMoving ? 'animate-bounce' : ''
-              } ${devilCaught ? 'text-8xl' : ''}`}
+              className={`absolute transition-all duration-300 z-10 ${
+                isDevilMoving ? 'animate-pulse' : ''
+              }`}
               style={{
                 left: `${devilPosition.x}%`,
                 top: `${devilPosition.y}%`,
@@ -167,11 +167,48 @@ const Index = () => {
                 animation: devilCaught 
                   ? 'none' 
                   : isDevilMoving 
-                  ? 'bounce 1s infinite' 
-                  : 'none'
+                  ? 'devilRun 0.5s infinite' 
+                  : 'devilIdle 2s infinite'
               }}
             >
-              😈
+              <div className={`relative ${devilCaught ? 'scale-150' : 'scale-100'} transition-transform duration-500`}>
+                {/* Тело черта */}
+                <div className="relative w-16 h-20 text-center">
+                  {/* Рога */}
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                    <span className="text-red-800 text-lg">👹</span>
+                  </div>
+                  
+                  {/* Голова с бородой */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-900 w-8 h-8 rounded-full border-2 border-red-700">
+                    {/* Глаза */}
+                    <div className="absolute top-1 left-1 w-1 h-1 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <div className="absolute top-1 right-1 w-1 h-1 bg-yellow-400 rounded-full animate-pulse"></div>
+                    {/* Борода */}
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-gray-800 rounded-b-full"></div>
+                  </div>
+                  
+                  {/* Туловище */}
+                  <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-red-800 rounded-lg border border-red-600"></div>
+                  
+                  {/* Руки (анимированные) */}
+                  <div className={`absolute top-7 left-2 w-3 h-1 bg-red-700 rounded transform origin-right ${isDevilMoving ? 'rotate-12 animate-pulse' : 'rotate-6'} transition-transform duration-200`}></div>
+                  <div className={`absolute top-7 right-2 w-3 h-1 bg-red-700 rounded transform origin-left ${isDevilMoving ? '-rotate-12 animate-pulse' : '-rotate-6'} transition-transform duration-200`}></div>
+                  
+                  {/* Ноги с копытами */}
+                  <div className={`absolute bottom-0 left-3 w-2 h-4 bg-red-700 rounded-t transform ${isDevilMoving ? 'rotate-3' : 'rotate-0'} transition-transform duration-300`}>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-black rounded-b-full"></div>
+                  </div>
+                  <div className={`absolute bottom-0 right-3 w-2 h-4 bg-red-700 rounded-t transform ${isDevilMoving ? '-rotate-3' : 'rotate-0'} transition-transform duration-300`}>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-black rounded-b-full"></div>
+                  </div>
+                  
+                  {/* Хвост */}
+                  <div className={`absolute bottom-2 -right-2 w-1 h-8 bg-red-800 rounded-full transform origin-top ${isDevilMoving ? 'rotate-12 animate-bounce' : 'rotate-6'} transition-transform duration-300`}>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-red-900 rotate-45"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 

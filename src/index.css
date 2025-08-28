@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Анимации для черта */
+@keyframes devilRun {
+  0%,
+  100% {
+    transform: translateY(0px) scaleX(1);
+  }
+  25% {
+    transform: translateY(-2px) scaleX(0.95);
+  }
+  50% {
+    transform: translateY(0px) scaleX(1.05);
+  }
+  75% {
+    transform: translateY(-1px) scaleX(0.98);
+  }
+}
+
+@keyframes devilIdle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
