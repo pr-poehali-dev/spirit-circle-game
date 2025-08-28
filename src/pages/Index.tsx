@@ -85,7 +85,7 @@ const Index = () => {
         {/* Основной круг */}
         <div 
           ref={circleRef}
-          className="relative w-[648px] h-[648px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] border-2 border-black" 
+          className="relative w-[608px] h-[608px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] border-2 border-black" 
           onClick={handleCircleClick}
           style={{
             background: devilCaught 
@@ -102,7 +102,7 @@ const Index = () => {
           >
             {alphabet.map((letter, index) => {
               const angle = (index / alphabet.length) * 360;
-              const radius = 280; // радиус для позиционирования букв (уменьшен для предотвращения выхода за границы)
+              const radius = 300; // радиус для позиционирования букв
               const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
               const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
               return (
