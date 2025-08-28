@@ -109,7 +109,7 @@ const Index = () => {
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-340px) rotate(-${angle}deg)`,
+                    transform: `rotate(${angle}deg) translateY(-340px) rotate(${angle}deg)`,
                     transformOrigin: '0 340px'
                   }}
                 >
