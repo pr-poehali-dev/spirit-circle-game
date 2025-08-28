@@ -9,7 +9,7 @@ const Index = () => {
   const circleRef = useRef<HTMLDivElement>(null);
 
   const alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'.split('');
-  const numbers = Array.from({length: 24}, (_, i) => (i % 10).toString());
+  const numbers = Array.from({length: 24}, (_, i) => (i + 1).toString());
 
   const handleCircleClick = (e: React.MouseEvent) => {
     if (showDevil && !devilCaught) {
