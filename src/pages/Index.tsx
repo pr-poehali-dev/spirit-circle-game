@@ -102,7 +102,7 @@ const Index = () => {
           >
             {alphabet.map((letter, index) => {
               const angle = (index / alphabet.length) * 360;
-              const radius = 300; // радиус для позиционирования букв
+              const radius = 280; // радиус для позиционирования букв (уменьшен для предотвращения выхода за границы)
               const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
               const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
               return (
