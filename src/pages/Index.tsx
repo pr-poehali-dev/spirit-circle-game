@@ -122,6 +122,35 @@ const Index = () => {
             })}
           </div>
 
+          {/* Цифры по внутреннему диаметру */}
+          <div 
+            className="absolute inset-0 overflow-hidden rounded-full"
+            style={{
+              animation: 'spin 15s linear infinite reverse'
+            }}
+          >
+            {numbers.map((number, index) => {
+              const angle = (index / numbers.length) * 360;
+              const radius = 220; // меньший радиус для цифр
+              const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
+              const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
+              return (
+                <div
+                  key={number}
+                  className="absolute text-lg font-bold text-gray-600 font-['Rubik']"
+                  style={{
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+                    transformOrigin: 'center'
+                  }}
+                >
+                  {number}
+                </div>
+              );
+            })}
+          </div>
+
           {/* Черт */}
           {showDevil && (
             <div
