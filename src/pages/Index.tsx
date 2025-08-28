@@ -221,13 +221,11 @@ const Index = () => {
               animation: 'sway 3s ease-in-out infinite'
             }}
           >
-            <svg width="36" height="60" viewBox="0 0 36 60" fill="none">
+            <svg width="36" height="30" viewBox="0 0 36 30" fill="none">
               {/* Северная стрелка (красная) */}
               <path d="M18 3 L27 27 L18 22 L9 27 Z" fill="#dc2626" />
-              {/* Южная стрелка (белая) */}
-              <path d="M18 57 L9 33 L18 38 L27 33 Z" fill="#ffffff" stroke="#dc2626" strokeWidth="1.5" />
               {/* Центральная точка */}
-              <circle cx="18" cy="30" r="3" fill="#dc2626" />
+              <circle cx="18" cy="27" r="3" fill="#dc2626" />
             </svg>
           </div>
         </div>
