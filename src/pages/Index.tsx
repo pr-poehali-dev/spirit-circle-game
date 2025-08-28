@@ -94,7 +94,12 @@ const Index = () => {
           }}
         >
           {/* Алфавит по границе круга */}
-          <div className="absolute inset-0">
+          <div 
+            className="absolute inset-0"
+            style={{
+              animation: 'spin 20s linear infinite'
+            }}
+          >
             {alphabet.map((letter, index) => {
               const angle = (index / alphabet.length) * 360;
               const radius = 320; // радиус для позиционирования букв
@@ -105,7 +110,7 @@ const Index = () => {
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-${radius}px) rotate(${angle}deg)`,
+                    transform: `rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`,
                     transformOrigin: '0 0'
                   }}
                 >
