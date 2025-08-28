@@ -171,43 +171,79 @@ const Index = () => {
                   : 'devilIdle 2s infinite'
               }}
             >
-              <div className={`relative ${devilCaught ? 'scale-150' : 'scale-100'} transition-transform duration-500`}>
-                {/* Тело черта */}
-                <div className="relative w-16 h-20 text-center">
-                  {/* Рога */}
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                    <span className="text-red-800 text-lg">👹</span>
-                  </div>
+              <div className={`relative ${devilCaught ? 'scale-125' : 'scale-100'} transition-all duration-500`}>
+                {/* SVG силуэт черта в динамичной позе */}
+                <svg 
+                  width="60" 
+                  height="80" 
+                  viewBox="0 0 60 80" 
+                  className={`${isDevilMoving ? 'animate-pulse' : ''}`}
+                  style={{
+                    transform: isDevilMoving ? 'skewX(-5deg)' : 'skewX(0deg)',
+                    transition: 'transform 0.2s ease-in-out'
+                  }}
+                >
+                  {/* Основной силуэт черта */}
+                  <g fill={devilCaught ? '#dc2626' : '#991b1b'} stroke={devilCaught ? '#fef2f2' : 'none'} strokeWidth="1">
+                    
+                    {/* Рога */}
+                    <path d="M25 8 L20 2 M35 8 L40 2" stroke="#4a5568" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M22 10 L18 4 M38 10 L42 4" stroke="#4a5568" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                    
+                    {/* Голова с заостренными ушами */}
+                    <ellipse cx="30" cy="15" rx="12" ry="10"/>
+                    <path d="M18 12 L15 8 L20 10 Z"/>
+                    <path d="M42 12 L45 8 L40 10 Z"/>
+                    
+                    {/* Глаза (светящиеся) */}
+                    <circle cx="25" cy="13" r="2" fill={devilCaught ? '#fbbf24' : '#f59e0b'} className="animate-pulse"/>
+                    <circle cx="35" cy="13" r="2" fill={devilCaught ? '#fbbf24' : '#f59e0b'} className="animate-pulse"/>
+                    <circle cx="25" cy="13" r="0.5" fill="#000"/>
+                    <circle cx="35" cy="13" r="0.5" fill="#000"/>
+                    
+                    {/* Нос/морда */}
+                    <path d="M30 16 L28 20 L32 20 Z"/>
+                    
+                    {/* Туловище (изогнутый, динамичный) */}
+                    <path d="M20 25 Q15 35 18 45 Q20 55 25 50 Q35 52 40 45 Q45 35 40 25 Q35 20 30 22 Q25 20 20 25 Z"/>
+                    
+                    {/* Левая рука (вытянутая вперед, как на силуэте) */}
+                    <path className={`${isDevilMoving ? 'animate-bounce' : ''}`} d="M18 35 Q10 30 5 35 Q8 38 12 36 L15 40 Q18 38 16 35"/>
+                    <path d="M8 35 L3 33 M8 37 L3 39 M10 39 L5 42" stroke="#4a5568" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                    
+                    {/* Правая рука (согнутая) */}
+                    <path className={`${isDevilMoving ? 'animate-pulse' : ''}`} d="M42 35 Q48 32 52 38 Q50 42 45 40 L42 38"/>
+                    <path d="M48 38 L52 35 M48 40 L52 42" stroke="#4a5568" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                    
+                    {/* Левая нога (в прыжке) */}
+                    <path className={`${isDevilMoving ? 'animate-bounce' : ''}`} d="M22 50 Q18 60 20 70 Q22 72 25 70 L28 68 Q30 70 28 72"/>
+                    <ellipse cx="28" cy="75" rx="4" ry="2" fill="#1f2937"/>
+                    
+                    {/* Правая нога (согнута) */}
+                    <path className={`${isDevilMoving ? 'animate-pulse' : ''}`} d="M38 50 Q42 58 40 65 Q38 67 35 65 L32 63 Q30 65 32 67"/>
+                    <ellipse cx="32" cy="70" rx="4" ry="2" fill="#1f2937"/>
+                    
+                    {/* Хвост (S-образный, как на картинке) */}
+                    <path 
+                      className={`${isDevilMoving ? 'animate-bounce' : ''}`}
+                      d="M40 45 Q50 48 52 55 Q54 62 48 65 Q42 68 45 75"
+                      stroke={devilCaught ? '#dc2626' : '#991b1b'} 
+                      strokeWidth="4" 
+                      fill="none" 
+                      strokeLinecap="round"
+                    />
+                    <path d="M44 74 L46 78 L42 76 Z" fill={devilCaught ? '#dc2626' : '#991b1b'}/>
+                    
+                  </g>
                   
-                  {/* Голова с бородой */}
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-900 w-8 h-8 rounded-full border-2 border-red-700">
-                    {/* Глаза */}
-                    <div className="absolute top-1 left-1 w-1 h-1 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <div className="absolute top-1 right-1 w-1 h-1 bg-yellow-400 rounded-full animate-pulse"></div>
-                    {/* Борода */}
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-gray-800 rounded-b-full"></div>
-                  </div>
-                  
-                  {/* Туловище */}
-                  <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-red-800 rounded-lg border border-red-600"></div>
-                  
-                  {/* Руки (анимированные) */}
-                  <div className={`absolute top-7 left-2 w-3 h-1 bg-red-700 rounded transform origin-right ${isDevilMoving ? 'rotate-12 animate-pulse' : 'rotate-6'} transition-transform duration-200`}></div>
-                  <div className={`absolute top-7 right-2 w-3 h-1 bg-red-700 rounded transform origin-left ${isDevilMoving ? '-rotate-12 animate-pulse' : '-rotate-6'} transition-transform duration-200`}></div>
-                  
-                  {/* Ноги с копытами */}
-                  <div className={`absolute bottom-0 left-3 w-2 h-4 bg-red-700 rounded-t transform ${isDevilMoving ? 'rotate-3' : 'rotate-0'} transition-transform duration-300`}>
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-black rounded-b-full"></div>
-                  </div>
-                  <div className={`absolute bottom-0 right-3 w-2 h-4 bg-red-700 rounded-t transform ${isDevilMoving ? '-rotate-3' : 'rotate-0'} transition-transform duration-300`}>
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-black rounded-b-full"></div>
-                  </div>
-                  
-                  {/* Хвост */}
-                  <div className={`absolute bottom-2 -right-2 w-1 h-8 bg-red-800 rounded-full transform origin-top ${isDevilMoving ? 'rotate-12 animate-bounce' : 'rotate-6'} transition-transform duration-300`}>
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-red-900 rotate-45"></div>
-                  </div>
-                </div>
+                  {/* Дополнительные эффекты для пойманного черта */}
+                  {devilCaught && (
+                    <>
+                      <circle cx="25" cy="13" r="4" fill="#fbbf24" opacity="0.6" className="animate-ping"/>
+                      <circle cx="35" cy="13" r="4" fill="#fbbf24" opacity="0.6" className="animate-ping"/>
+                    </>
+                  )}
+                </svg>
               </div>
             </div>
           )}
