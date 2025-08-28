@@ -69,6 +69,16 @@
   }
 }
 
+/* Анимация вращения хвоста по кругу */
+@keyframes rotateTail {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

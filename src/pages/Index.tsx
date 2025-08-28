@@ -199,7 +199,7 @@ const Index = () => {
                 left: '25px',
                 top: '40px',
                 transformOrigin: 'top center',
-                animation: 'swayTail 3s ease-in-out infinite'
+                animation: 'rotateTail 5s linear infinite'
               }}
             >
               {/* Основание хвоста */}
