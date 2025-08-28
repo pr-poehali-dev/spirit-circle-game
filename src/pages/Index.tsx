@@ -190,75 +190,76 @@ const Index = () => {
                 className={`relative ${devilCaught ? 'scale-150' : 'scale-100'} transition-all duration-500 cursor-pointer`}
                 onClick={() => !devilCaught && setDevilCaught(true)}
               >
-                {/* SVG силуэт черта в динамичной позе */}
+                {/* Точная копия силуэта черта с картинки */}
                 <svg 
-                  width="80" 
-                  height="100" 
-                  viewBox="0 0 60 80" 
+                  width="200" 
+                  height="250" 
+                  viewBox="0 0 200 250" 
                   className={`${!devilCaught ? 'animate-pulse' : ''}`}
                   style={{
-                    transform: !devilCaught && isDevilMoving ? 'skewX(-5deg)' : 'skewX(0deg)',
+                    transform: !devilCaught && isDevilMoving ? 'skewX(-3deg)' : 'skewX(0deg)',
                     transition: 'transform 0.2s ease-in-out'
                   }}
                 >
-                  {/* Основной силуэт черта - серый */}
-                  <g fill={devilCaught ? '#6b7280' : '#4b5563'} stroke={devilCaught ? '#9ca3af' : 'none'} strokeWidth="1">
+                  {/* Точная копия силуэта с картинки - черный силуэт */}
+                  <g fill={devilCaught ? '#374151' : '#000000'}>
                     
-                    {/* Рога */}
-                    <path d="M25 8 L20 2 M35 8 L40 2" stroke="#4a5568" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                    <path d="M22 10 L18 4 M38 10 L42 4" stroke="#4a5568" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                    {/* Рога (прямые, как на картинке) */}
+                    <path d="M85 15 C85 10, 88 5, 90 0 M115 15 C115 10, 112 5, 110 0"/>
                     
-                    {/* Голова с заостренными ушами */}
-                    <ellipse cx="30" cy="15" rx="12" ry="10"/>
-                    <path d="M18 12 L15 8 L20 10 Z"/>
-                    <path d="M42 12 L45 8 L40 10 Z"/>
+                    {/* Голова в профиль с характерным силуэтом */}
+                    <path d="M75 20 C75 15, 78 12, 85 15 C90 18, 95 20, 100 25 C105 30, 108 35, 110 40 C112 45, 115 50, 118 55 C120 60, 118 65, 115 68 C110 70, 105 68, 100 65 C95 62, 90 58, 85 55 C80 52, 75 48, 72 43 C70 38, 70 33, 72 28 C73 25, 74 22, 75 20"/>
                     
-                    {/* Глаза (красные светящиеся точки) */}
-                    <circle cx="25" cy="13" r="2" fill={devilCaught ? '#ef4444' : '#dc2626'} className="animate-pulse"/>
-                    <circle cx="35" cy="13" r="2" fill={devilCaught ? '#ef4444' : '#dc2626'} className="animate-pulse"/>
-                    <circle cx="25" cy="13" r="0.5" fill="#7f1d1d"/>
-                    <circle cx="35" cy="13" r="0.5" fill="#7f1d1d"/>
+                    {/* Туловище наклоненное вперед */}
+                    <path d="M100 65 C95 70, 90 75, 88 82 C86 90, 88 98, 92 105 C96 112, 102 118, 108 122 C115 126, 122 128, 130 125 C138 122, 145 115, 148 107 C150 98, 148 88, 145 80 C142 72, 137 65, 130 60 C125 56, 118 55, 112 58 C108 60, 104 62, 100 65"/>
                     
-                    {/* Нос/морда */}
-                    <path d="M30 16 L28 20 L32 20 Z"/>
+                    {/* Левая рука вытянутая вперед с когтями */}
+                    <path className={`${!devilCaught && isDevilMoving ? 'animate-bounce' : ''}`} d="M88 82 C80 78, 70 75, 60 78 C50 82, 42 88, 38 96 C35 104, 38 112, 45 115 C52 118, 60 115, 65 110 C68 108, 70 105, 72 102"/>
                     
-                    {/* Туловище (изогнутый, динамичный) */}
-                    <path d="M20 25 Q15 35 18 45 Q20 55 25 50 Q35 52 40 45 Q45 35 40 25 Q35 20 30 22 Q25 20 20 25 Z"/>
+                    {/* Пальцы левой руки (когти) */}
+                    <path d="M38 96 L30 92 L32 98 M40 94 L32 88 L35 95 M42 98 L35 94 L38 100 M45 102 L38 98 L42 105 M48 106 L42 102 L46 108"/>
                     
-                    {/* Левая рука (вытянутая вперед, как на силуэте) */}
-                    <path className={`${isDevilMoving ? 'animate-bounce' : ''}`} d="M18 35 Q10 30 5 35 Q8 38 12 36 L15 40 Q18 38 16 35"/>
-                    <path d="M8 35 L3 33 M8 37 L3 39 M10 39 L5 42" stroke="#4a5568" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                    {/* Правая рука согнутая */}
+                    <path className={`${!devilCaught && isDevilMoving ? 'animate-pulse' : ''}`} d="M148 107 C155 110, 162 115, 165 122 C168 130, 165 138, 160 143 C155 148, 148 150, 142 148 C138 146, 135 142, 135 138"/>
                     
-                    {/* Правая рука (согнутая) */}
-                    <path className={`${isDevilMoving ? 'animate-pulse' : ''}`} d="M42 35 Q48 32 52 38 Q50 42 45 40 L42 38"/>
-                    <path d="M48 38 L52 35 M48 40 L52 42" stroke="#4a5568" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                    {/* Левая нога в беге (согнута) */}
+                    <path className={`${!devilCaught && isDevilMoving ? 'animate-bounce' : ''}`} d="M92 105 C88 115, 85 125, 88 135 C92 145, 98 152, 105 158 C110 162, 115 165, 118 170 C120 175, 118 180, 115 185"/>
                     
-                    {/* Левая нога (в прыжке) */}
-                    <path className={`${isDevilMoving ? 'animate-bounce' : ''}`} d="M22 50 Q18 60 20 70 Q22 72 25 70 L28 68 Q30 70 28 72"/>
-                    <ellipse cx="28" cy="75" rx="4" ry="2" fill="#1f2937"/>
+                    {/* Копыто левой ноги */}
+                    <ellipse cx="118" cy="190" rx="8" ry="5" transform="rotate(-15 118 190)"/>
+                    <path d="M110 188 C112 186, 115 186, 118 188 M118 188 C121 186, 124 186, 126 188"/>
                     
-                    {/* Правая нога (согнута) */}
-                    <path className={`${isDevilMoving ? 'animate-pulse' : ''}`} d="M38 50 Q42 58 40 65 Q38 67 35 65 L32 63 Q30 65 32 67"/>
-                    <ellipse cx="32" cy="70" rx="4" ry="2" fill="#1f2937"/>
+                    {/* Правая нога в беге (вытянута назад) */}
+                    <path className={`${!devilCaught && isDevilMoving ? 'animate-pulse' : ''}`} d="M130 125 C135 135, 142 145, 150 152 C158 159, 167 164, 175 167 C183 170, 191 171, 198 169 C205 167, 210 163, 212 157"/>
                     
-                    {/* Хвост (S-образный, как на картинке) */}
+                    {/* Копыто правой ноги */}
+                    <ellipse cx="215" cy="160" rx="8" ry="5" transform="rotate(25 215 160)"/>
+                    <path d="M207 158 C209 156, 212 156, 215 158 M215 158 C218 156, 221 156, 223 158"/>
+                    
+                    {/* Хвост изогнутый назад */}
                     <path 
-                      className={`${isDevilMoving ? 'animate-bounce' : ''}`}
-                      d="M40 45 Q50 48 52 55 Q54 62 48 65 Q42 68 45 75"
-                      stroke={devilCaught ? '#dc2626' : '#991b1b'} 
-                      strokeWidth="4" 
+                      className={`${!devilCaught && isDevilMoving ? 'animate-bounce' : ''}`}
+                      d="M148 115 C155 118, 162 122, 168 128 C174 134, 178 142, 180 150 C182 158, 181 166, 178 173 C175 180, 170 186, 163 190 C158 193, 152 194, 147 192"
+                      strokeWidth="6" 
                       fill="none" 
+                      stroke={devilCaught ? '#374151' : '#000000'}
                       strokeLinecap="round"
                     />
-                    <path d="M44 74 L46 78 L42 76 Z" fill={devilCaught ? '#dc2626' : '#991b1b'}/>
+                    
+                    {/* Острый кончик хвоста */}
+                    <path d="M147 192 L145 198 L152 195 Z"/>
                     
                   </g>
+                  
+                  {/* Красные светящиеся глаза */}
+                  <circle cx="95" cy="35" r="3" fill="#dc2626" className="animate-pulse"/>
+                  <circle cx="95" cy="35" r="1.5" fill="#7f1d1d"/>
                   
                   {/* Дополнительные эффекты для пойманного черта */}
                   {devilCaught && (
                     <>
-                      <circle cx="25" cy="13" r="4" fill="#fbbf24" opacity="0.6" className="animate-ping"/>
-                      <circle cx="35" cy="13" r="4" fill="#fbbf24" opacity="0.6" className="animate-ping"/>
+                      <circle cx="95" cy="35" r="8" fill="#dc2626" opacity="0.4" className="animate-ping"/>
+                      <circle cx="100" cy="50" r="15" fill="#374151" opacity="0.3" className="animate-pulse"/>
                     </>
                   )}
                 </svg>
