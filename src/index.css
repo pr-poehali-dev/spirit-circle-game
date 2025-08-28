@@ -47,16 +47,6 @@
   }
 }
 
-/* Анимация вращения трости по кругу */
-@keyframes rotateCane {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* Анимация покачивания руки с тростью */
 @keyframes sway {
   0%,
