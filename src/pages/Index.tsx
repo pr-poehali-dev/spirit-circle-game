@@ -95,7 +95,7 @@ const Index = () => {
         >
           {/* Внешний обод с алфавитом */}
           <div 
-            className="absolute inset-4 rounded-full border-4 border-gray-800 animate-spin"
+            className="absolute inset-4 rounded-full animate-spin"
             style={{
               animation: 'spin 20s linear infinite'
             }}
@@ -121,7 +121,7 @@ const Index = () => {
 
           {/* Внутренний обод с цифрами */}
           <div 
-            className="absolute inset-16 rounded-full border-4 border-gray-600"
+            className="absolute inset-16 rounded-full"
             style={{
               animation: 'spin 15s linear infinite reverse'
             }}
