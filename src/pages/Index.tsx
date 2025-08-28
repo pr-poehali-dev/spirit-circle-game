@@ -95,8 +95,9 @@ const Index = () => {
         >
           {/* Алфавит по границе круга */}
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
             style={{
+              borderRadius: '30px',
               animation: 'spin 20s linear infinite'
             }}
           >
