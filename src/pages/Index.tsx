@@ -215,14 +215,19 @@ const Index = () => {
           <div 
             className="absolute"
             style={{
-              left: '-8px',
-              top: '-202px',
+              left: '-12px',
+              top: '-214px',
               color: '#dc2626',
               animation: 'sway 3s ease-in-out infinite'
             }}
           >
-            <svg width="16" height="32" viewBox="0 0 16 32" fill="currentColor">
-              <path d="M8 0 L14 8 L10 8 L10 24 L14 24 L8 32 L2 24 L6 24 L6 8 L2 8 Z" />
+            <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
+              {/* Северная стрелка (красная) */}
+              <path d="M12 2 L18 18 L12 15 L6 18 Z" fill="#dc2626" />
+              {/* Южная стрелка (белая) */}
+              <path d="M12 38 L6 22 L12 25 L18 22 Z" fill="#ffffff" stroke="#dc2626" strokeWidth="1" />
+              {/* Центральная точка */}
+              <circle cx="12" cy="20" r="2" fill="#dc2626" />
             </svg>
           </div>
         </div>
