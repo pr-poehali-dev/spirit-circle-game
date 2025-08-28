@@ -177,14 +177,23 @@ const Index = () => {
 
 
 
-          {/* Счетчик кликов */}
+          {/* Изображение демона в центре */}
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <img 
+              src="https://cdn.poehali.dev/files/b4926a70-212f-40ee-bd79-c4e60158e320.jpg" 
+              alt="Демон"
+              className="w-32 h-40 object-contain opacity-80"
+            />
+          </div>
+
+          {/* Счетчик кликов поверх изображения */}
           {!showDevil && (
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-600 font-['Rubik']">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 translate-y-16 z-10">
+              <div className="text-center bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
+                <div className="text-xl font-bold text-white font-['Rubik']">
                   {3 - clickCount}
                 </div>
-                <div className="text-sm text-gray-500 mt-1">
+                <div className="text-xs text-gray-300">
                   {clickCount === 0 && 'Кликните 3 раза'}
                   {clickCount === 1 && 'Еще 2 клика'}
                   {clickCount === 2 && 'Последний клик!'}
