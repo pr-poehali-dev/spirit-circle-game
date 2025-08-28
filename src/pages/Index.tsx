@@ -189,12 +189,12 @@ const Index = () => {
                   mixBlendMode: 'multiply'
                 }}
               />
-              {/* Удлиненная маскировка оригинальной трости (+3см = +36px) */}
+              {/* Маскировка оригинальной трости */}
               <div 
                 className="absolute bg-white"
                 style={{
                   width: '6px',
-                  height: '156px',
+                  height: '120px',
                   left: '105px',
                   top: '200px',
                   transform: 'rotate(-15deg)',
@@ -203,12 +203,12 @@ const Index = () => {
               ></div>
             </div>
             
-            {/* Удлиненная анимированная трость */}
+            {/* Анимированная трость */}
             <div className="absolute left-1/2 top-1/2 w-0 h-0">
               <div 
                 className="absolute w-1 bg-amber-800 origin-bottom"
                 style={{
-                  height: '156px',
+                  height: '120px',
                   left: '-15px',
                   top: '10px',
                   transformOrigin: 'bottom center',
