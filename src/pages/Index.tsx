@@ -95,25 +95,23 @@ const Index = () => {
         >
           {/* Алфавит по границе круга */}
           <div 
-            className="absolute inset-0"
+            className="absolute inset-4 rounded-full overflow-hidden"
             style={{
               animation: 'spin 20s linear infinite'
             }}
           >
             {alphabet.map((letter, index) => {
               const angle = (index / alphabet.length) * 360;
-              const radius = 300; // радиус для позиционирования букв
-              const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
-              const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
+              const radius = 290; // радиус для позиционирования букв
               return (
                 <div
                   key={letter}
                   className="absolute text-xl font-bold text-black font-['Rubik']"
                   style={{
-                    left: `calc(50% + ${x}px)`,
-                    top: `calc(50% + ${y}px)`,
-                    transform: `translate(-50%, -50%) rotate(${angle}deg)`,
-                    transformOrigin: 'center'
+                    left: '50%',
+                    top: '50%',
+                    transform: `rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`,
+                    transformOrigin: '0 ${radius}px'
                   }}
                 >
                   {letter}
