@@ -207,7 +207,7 @@ const Index = () => {
                 className="bg-gray-800"
                 style={{
                   width: '8px',
-                  height: '220px',
+                  height: '270px',
                   borderRadius: '4px 4px 2px 2px'
                 }}
               ></div>
