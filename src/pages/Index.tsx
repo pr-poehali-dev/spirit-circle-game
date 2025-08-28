@@ -197,7 +197,7 @@ const Index = () => {
               className="absolute origin-top"
               style={{
                 left: '25px',
-                top: '16px',
+                top: '-34px',
                 transformOrigin: 'top center',
                 animation: 'rotateTail 5s linear infinite'
               }}
