@@ -93,31 +93,7 @@ const Index = () => {
               : 'white'
           }}
         >
-          {/* Внешний обод с алфавитом */}
-          <div 
-            className="absolute inset-4 rounded-full animate-spin"
-            style={{
-              animation: 'spin 20s linear infinite'
-            }}
-          >
-            {alphabet.map((letter, index) => {
-              const angle = (index / alphabet.length) * 360;
-              return (
-                <div
-                  key={letter}
-                  className="absolute text-2xl font-bold text-gray-800 font-['Rubik']"
-                  style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-340px) rotate(${angle}deg)`,
-                    transformOrigin: '0 340px'
-                  }}
-                >
-                  {letter}
-                </div>
-              );
-            })}
-          </div>
+
 
 
 
