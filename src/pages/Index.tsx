@@ -95,7 +95,7 @@ const Index = () => {
         >
           {/* Алфавит по границе круга */}
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
             style={{
               animation: 'spin 20s linear infinite'
             }}
@@ -106,7 +106,7 @@ const Index = () => {
               return (
                 <div
                   key={letter}
-                  className="absolute text-xl font-bold text-black font-['Rubik']"
+                  className="absolute text-xl font-bold text-black font-['Rubik'] will-change-transform"
                   style={{
                     left: '50%',
                     top: '50%',
