@@ -179,46 +179,16 @@ const Index = () => {
 
           {/* Изображение демона в центре */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="relative">
-              <img 
-                src="https://cdn.poehali.dev/files/b4926a70-212f-40ee-bd79-c4e60158e320.jpg" 
-                alt="Демон"
-                className="w-80 h-96 object-contain opacity-80"
-                style={{ 
-                  filter: 'brightness(1.2) contrast(1.3)',
-                  mixBlendMode: 'multiply'
-                }}
-              />
-              {/* Маскировка оригинальной трости */}
-              <div 
-                className="absolute bg-white"
-                style={{
-                  width: '6px',
-                  height: '120px',
-                  left: '105px',
-                  top: '200px',
-                  transform: 'rotate(-15deg)',
-                  mixBlendMode: 'multiply'
-                }}
-              ></div>
-            </div>
-            
-            {/* Анимированная трость */}
-            <div className="absolute left-1/2 top-1/2 w-0 h-0">
-              <div 
-                className="absolute w-1 bg-amber-800 origin-bottom"
-                style={{
-                  height: '120px',
-                  left: '-15px',
-                  top: '10px',
-                  transformOrigin: 'bottom center',
-                  animation: 'rotateCane 4s linear infinite'
-                }}
-              >
-                {/* Набалдашник трости */}
-                <div className="absolute -top-2 -left-1 w-3 h-3 bg-amber-600 rounded-full"></div>
-              </div>
-            </div>
+            <img 
+              src="https://cdn.poehali.dev/files/b4926a70-212f-40ee-bd79-c4e60158e320.jpg" 
+              alt="Демон"
+              className="w-80 h-96 object-contain opacity-80 animate-pulse"
+              style={{ 
+                filter: 'brightness(1.2) contrast(1.3)',
+                mixBlendMode: 'multiply',
+                animation: 'sway 3s ease-in-out infinite'
+              }}
+            />
           </div>
 
           {/* Счетчик кликов поверх изображения */}
