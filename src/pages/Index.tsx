@@ -225,7 +225,7 @@ const Index = () => {
                 left: '-18px',
                 top: '-265px',
                 color: '#dc2626',
-                transform: 'translateY(15px)'
+                transform: 'translateY(35px)'
               }}
             >
               <svg width="36" height="30" viewBox="0 0 36 30" fill="none">
