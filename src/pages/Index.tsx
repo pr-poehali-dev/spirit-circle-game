@@ -119,31 +119,7 @@ const Index = () => {
             })}
           </div>
 
-          {/* Внутренний обод с цифрами */}
-          <div 
-            className="absolute inset-16 rounded-full"
-            style={{
-              animation: 'spin 15s linear infinite reverse'
-            }}
-          >
-            {numbers.map((number, index) => {
-              const angle = (index / numbers.length) * 360;
-              return (
-                <div
-                  key={number}
-                  className="absolute text-3xl font-bold text-gray-600 font-['Rubik']"
-                  style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-240px) rotate(${angle}deg)`,
-                    transformOrigin: '0 240px'
-                  }}
-                >
-                  {number}
-                </div>
-              );
-            })}
-          </div>
+
 
           {/* Черт */}
           {showDevil && (
