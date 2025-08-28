@@ -223,7 +223,7 @@ const Index = () => {
               className="absolute"
               style={{
                 left: '-18px',
-                top: '-140px',
+                top: '-120px',
                 color: '#dc2626'
               }}
             >
