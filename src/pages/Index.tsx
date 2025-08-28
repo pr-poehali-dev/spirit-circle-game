@@ -216,13 +216,13 @@ const Index = () => {
             className="absolute"
             style={{
               left: '-8px',
-              top: '-190px',
+              top: '-202px',
               color: '#dc2626',
               animation: 'sway 3s ease-in-out infinite'
             }}
           >
-            <svg width="16" height="24" viewBox="0 0 16 24" fill="currentColor">
-              <path d="M8 0 L14 16 L8 12 L2 16 Z" />
+            <svg width="16" height="32" viewBox="0 0 16 32" fill="currentColor">
+              <path d="M8 0 L14 8 L10 8 L10 24 L14 24 L8 32 L2 24 L6 24 L6 8 L2 8 Z" />
             </svg>
           </div>
         </div>
