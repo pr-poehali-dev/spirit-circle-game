@@ -182,10 +182,11 @@ const Index = () => {
             <img 
               src="https://cdn.poehali.dev/files/b4926a70-212f-40ee-bd79-c4e60158e320.jpg" 
               alt="Демон"
-              className="w-80 h-96 object-contain opacity-80"
+              className="w-80 h-96 object-contain opacity-80 animate-pulse"
               style={{ 
                 filter: 'brightness(1.2) contrast(1.3)',
-                mixBlendMode: 'multiply'
+                mixBlendMode: 'multiply',
+                animation: 'sway 3s ease-in-out infinite'
               }}
             />
           </div>

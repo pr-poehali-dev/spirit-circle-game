@@ -47,6 +47,17 @@
   }
 }
 
+/* Анимация покачивания руки с тростью */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
