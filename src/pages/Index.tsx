@@ -109,8 +109,8 @@ const Index = () => {
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-360px) rotate(-${angle}deg)`,
-                    transformOrigin: '0 0'
+                    transform: `rotate(${angle}deg) translateX(-50%) translateY(-370px)`,
+                    transformOrigin: '50% 370px'
                   }}
                 >
                   {letter}
@@ -135,8 +135,8 @@ const Index = () => {
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `rotate(${angle}deg) translateY(-280px) rotate(${angle}deg)`,
-                    transformOrigin: '0 0'
+                    transform: `rotate(${angle}deg) translateX(-50%) translateY(-290px)`,
+                    transformOrigin: '50% 290px'
                   }}
                 >
                   {number}
