@@ -216,7 +216,7 @@ const Index = () => {
             className="absolute"
             style={{
               left: '-18px',
-              top: '-219px',
+              top: '-226px',
               color: '#dc2626',
               animation: 'sway 3s ease-in-out infinite'
             }}
