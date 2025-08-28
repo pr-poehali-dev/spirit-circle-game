@@ -218,7 +218,7 @@ const Index = () => {
               left: '-18px',
               top: '-226px',
               color: '#dc2626',
-              animation: 'rotateTail 6s linear infinite'
+              animation: 'sway 3s ease-in-out infinite'
             }}
           >
             <svg width="36" height="30" viewBox="0 0 36 30" fill="none">
