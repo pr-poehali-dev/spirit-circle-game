@@ -223,8 +223,9 @@ const Index = () => {
               className="absolute"
               style={{
                 left: '-18px',
-                top: '-250px',
-                color: '#dc2626'
+                top: '-265px',
+                color: '#dc2626',
+                transform: 'translateY(15px)'
               }}
             >
               <svg width="36" height="30" viewBox="0 0 36 30" fill="none">
