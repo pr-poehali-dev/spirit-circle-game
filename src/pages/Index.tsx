@@ -49,21 +49,30 @@ const Index = () => {
   };
 
   const moveDevil = () => {
+    if (devilCaught) {
+      // Когда пойман - фиксируется в центре
+      setDevilPosition({ x: 50, y: 50 });
+      setIsDevilMoving(false);
+      return;
+    }
+
     const angle = Math.random() * 2 * Math.PI;
-    const radius = 160 + Math.random() * 80; // Случайное расстояние от центра
-    const x = 50 + (radius * Math.cos(angle)) / 2;
-    const y = 50 + (radius * Math.sin(angle)) / 2;
+    const radius = 120 + Math.random() * 120; // Увеличил радиус для большего пространства
+    const x = 50 + (radius * Math.cos(angle)) / 2.5;
+    const y = 50 + (radius * Math.sin(angle)) / 2.5;
     
     setDevilPosition({ 
-      x: Math.max(10, Math.min(90, x)), 
-      y: Math.max(10, Math.min(90, y)) 
+      x: Math.max(15, Math.min(85, x)), 
+      y: Math.max(15, Math.min(85, y)) 
     });
     
+    // Черт постоянно движется (более активно)
     setTimeout(() => {
       if (!devilCaught) {
+        setIsDevilMoving(true);
         moveDevil();
       }
-    }, 1000 + Math.random() * 2000);
+    }, 800 + Math.random() * 1200); // Уменьшил интервал для более активного движения
   };
 
   const resetGame = () => {
@@ -151,40 +160,49 @@ const Index = () => {
             })}
           </div>
 
-          {/* Реалистичный черт */}
+          {/* Серый черт */}
           {showDevil && (
             <div
-              className={`absolute transition-all duration-300 z-10 ${
-                isDevilMoving ? 'animate-pulse' : ''
-              }`}
+              className={`absolute transition-all duration-500 z-10 ${
+                !devilCaught && isDevilMoving ? 'animate-pulse' : ''
+              } cursor-pointer`}
+              onClick={() => {
+                if (!devilCaught) {
+                  setDevilCaught(true);
+                  moveDevil(); // Фиксирует в центре
+                }
+              }}
               style={{
                 left: `${devilPosition.x}%`,
                 top: `${devilPosition.y}%`,
                 transform: 'translate(-50%, -50%)',
                 filter: devilCaught 
-                  ? 'drop-shadow(0 0 20px red)' 
-                  : 'drop-shadow(0 0 10px rgba(255,0,0,0.5))',
+                  ? 'drop-shadow(0 0 30px rgba(107,114,128,0.8)) brightness(1.2)' 
+                  : 'drop-shadow(0 0 15px rgba(75,85,99,0.6))',
                 animation: devilCaught 
-                  ? 'none' 
-                  : isDevilMoving 
-                  ? 'devilRun 0.5s infinite' 
-                  : 'devilIdle 2s infinite'
+                  ? 'devilCaught 1s ease-out' 
+                  : !devilCaught && isDevilMoving 
+                  ? 'devilRun 0.4s infinite' 
+                  : 'devilIdle 2.5s infinite ease-in-out'
               }}
             >
-              <div className={`relative ${devilCaught ? 'scale-125' : 'scale-100'} transition-all duration-500`}>
+              <div 
+                className={`relative ${devilCaught ? 'scale-150' : 'scale-100'} transition-all duration-500 cursor-pointer`}
+                onClick={() => !devilCaught && setDevilCaught(true)}
+              >
                 {/* SVG силуэт черта в динамичной позе */}
                 <svg 
-                  width="60" 
-                  height="80" 
+                  width="80" 
+                  height="100" 
                   viewBox="0 0 60 80" 
-                  className={`${isDevilMoving ? 'animate-pulse' : ''}`}
+                  className={`${!devilCaught ? 'animate-pulse' : ''}`}
                   style={{
-                    transform: isDevilMoving ? 'skewX(-5deg)' : 'skewX(0deg)',
+                    transform: !devilCaught && isDevilMoving ? 'skewX(-5deg)' : 'skewX(0deg)',
                     transition: 'transform 0.2s ease-in-out'
                   }}
                 >
-                  {/* Основной силуэт черта */}
-                  <g fill={devilCaught ? '#dc2626' : '#991b1b'} stroke={devilCaught ? '#fef2f2' : 'none'} strokeWidth="1">
+                  {/* Основной силуэт черта - серый */}
+                  <g fill={devilCaught ? '#6b7280' : '#4b5563'} stroke={devilCaught ? '#9ca3af' : 'none'} strokeWidth="1">
                     
                     {/* Рога */}
                     <path d="M25 8 L20 2 M35 8 L40 2" stroke="#4a5568" strokeWidth="3" fill="none" strokeLinecap="round"/>
@@ -195,11 +213,11 @@ const Index = () => {
                     <path d="M18 12 L15 8 L20 10 Z"/>
                     <path d="M42 12 L45 8 L40 10 Z"/>
                     
-                    {/* Глаза (светящиеся) */}
-                    <circle cx="25" cy="13" r="2" fill={devilCaught ? '#fbbf24' : '#f59e0b'} className="animate-pulse"/>
-                    <circle cx="35" cy="13" r="2" fill={devilCaught ? '#fbbf24' : '#f59e0b'} className="animate-pulse"/>
-                    <circle cx="25" cy="13" r="0.5" fill="#000"/>
-                    <circle cx="35" cy="13" r="0.5" fill="#000"/>
+                    {/* Глаза (красные светящиеся точки) */}
+                    <circle cx="25" cy="13" r="2" fill={devilCaught ? '#ef4444' : '#dc2626'} className="animate-pulse"/>
+                    <circle cx="35" cy="13" r="2" fill={devilCaught ? '#ef4444' : '#dc2626'} className="animate-pulse"/>
+                    <circle cx="25" cy="13" r="0.5" fill="#7f1d1d"/>
+                    <circle cx="35" cy="13" r="0.5" fill="#7f1d1d"/>
                     
                     {/* Нос/морда */}
                     <path d="M30 16 L28 20 L32 20 Z"/>
