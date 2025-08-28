@@ -75,7 +75,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="relative">
+      <div className="relative rounded-none">
         {/* Главный заголовок */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 font-['Rubik']" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание на Черта</h1>
@@ -85,7 +85,7 @@ const Index = () => {
         {/* Основной круг */}
         <div 
           ref={circleRef}
-          className="relative w-[768px] h-[768px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
+          className="relative w-96 h-96 bg-white cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] rounded-full" 
           onClick={handleCircleClick}
           style={{
             background: devilCaught 
