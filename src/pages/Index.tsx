@@ -85,7 +85,7 @@ const Index = () => {
         {/* Основной круг */}
         <div 
           ref={circleRef}
-          className="relative w-[688px] h-[688px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)]" 
+          className="relative w-[688px] h-[688px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] border-2 border-black" 
           onClick={handleCircleClick}
           style={{
             background: devilCaught 
@@ -93,9 +93,27 @@ const Index = () => {
               : 'white'
           }}
         >
-
-
-
+          {/* Алфавит по границе круга */}
+          <div className="absolute inset-0">
+            {alphabet.map((letter, index) => {
+              const angle = (index / alphabet.length) * 360;
+              const radius = 320; // радиус для позиционирования букв
+              return (
+                <div
+                  key={letter}
+                  className="absolute text-xl font-bold text-black font-['Rubik']"
+                  style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: `rotate(${angle}deg) translateY(-${radius}px) rotate(${angle}deg)`,
+                    transformOrigin: '0 0'
+                  }}
+                >
+                  {letter}
+                </div>
+              );
+            })}
+          </div>
 
           {/* Черт */}
           {showDevil && (
