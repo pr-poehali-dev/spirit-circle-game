@@ -185,13 +185,13 @@ const Index = () => {
                 <div
                   className="absolute z-30"
                   style={{
-                    left: '-3px',
-                    top: '-160px',
-                    width: '6px',
-                    height: '160px',
+                    left: '-1px',
+                    top: '-200px',
+                    width: '2px',
+                    height: '200px',
                     backgroundColor: '#dc2626',
-                    borderRadius: '3px',
-                    boxShadow: '0 0 10px rgba(220, 38, 38, 0.8)'
+                    borderRadius: '1px',
+                    boxShadow: '0 0 8px rgba(220, 38, 38, 0.6)'
                   }}
                 />
                 {/* Центральная точка */}
