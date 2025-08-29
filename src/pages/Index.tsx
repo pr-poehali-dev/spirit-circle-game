@@ -210,32 +210,7 @@ const Index = () => {
           )}
         </div>
 
-        {/* Красная стрелка вращающаяся по окружности */}
-        <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2">
-          <div 
-            className="absolute w-0 h-0"
-            style={{
-              transformOrigin: '0 0',
-              animation: 'rotateTail 8s linear infinite'
-            }}
-          >
-            <div
-              className="absolute"
-              style={{
-                left: '-18px',
-                top: '-70px',
-                color: '#dc2626'
-              }}
-            >
-              <svg width="36" height="30" viewBox="0 0 36 30" fill="none">
-                {/* Северная стрелка (красная) */}
-                <path d="M18 3 L27 27 L18 22 L9 27 Z" fill="#dc2626" />
-                {/* Центральная точка */}
-                <circle cx="18" cy="27" r="3" fill="#dc2626" />
-              </svg>
-            </div>
-          </div>
-        </div>
+
 
         {/* Результат */}
         {devilCaught && (
