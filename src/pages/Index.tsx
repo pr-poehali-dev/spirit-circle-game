@@ -249,19 +249,7 @@ const Index = () => {
 
 
 
-        {/* Результат */}
-        {devilCaught && (
-          <div className="text-center mt-8 animate-fade-in">
-            <h2 className="text-2xl font-bold text-red-400 mb-4 font-['Rubik']">Черт пойман! 🔥</h2>
-            <p className="text-white mb-4">Ваше гадание завершено. Игла удерживает духа.</p>
-            <button 
-              onClick={resetGame}
-              className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-['Rubik']"
-            >
-              Новое гадание
-            </button>
-          </div>
-        )}
+
 
         {/* Подсказки */}
         {showDevil && !devilCaught && (
