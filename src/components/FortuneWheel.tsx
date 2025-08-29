@@ -48,7 +48,7 @@ const FortuneWheel = ({
         <div 
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
-            animation: 'spin 20s linear infinite'
+            animation: shouldStop ? 'none' : 'spin 20s linear infinite'
           }}
         >
           {alphabet.map((letter, index) => {
@@ -77,7 +77,7 @@ const FortuneWheel = ({
         <div 
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
-            animation: 'spin 15s linear infinite reverse'
+            animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse'
           }}
         >
           {hourNumbers.map((number, index) => {
