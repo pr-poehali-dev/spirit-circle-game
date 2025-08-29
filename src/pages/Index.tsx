@@ -267,7 +267,7 @@ const Index = () => {
               alt="Демон"
               className="w-80 h-96 object-contain opacity-80 animate-pulse"
               style={{ 
-                filter: 'brightness(1.2) contrast(1.3)',
+                filter: 'brightness(0.8) contrast(1.5) saturate(0.3) hue-rotate(180deg)',
                 mixBlendMode: 'multiply',
                 animation: 'sway 3s ease-in-out infinite'
               }}
