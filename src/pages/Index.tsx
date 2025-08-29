@@ -125,28 +125,60 @@ const Index = () => {
     const baseValue = (vowels * 7 + consonants * 3 + textLength * 2 + wordsCount * 5) % 100;
     
     if (isYesNoQuestion) {
-      // Неравномерный алгоритм для ДА/НЕТ
-      // Анализируем тональность вопроса
-      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет)\b/i.test(lowerText);
-      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль)\b/i.test(lowerText);
+      // Сложный алгоритм для максимально неодинаковых ответов
       
-      // Базовая вероятность (60% ДА, 40% НЕТ)
-      let yesThreshold = 60;
+      // 1. Анализ содержания вопроса
+      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет|выйду|замуж|женюсь|поможет|сбудется)\b/i.test(lowerText);
+      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль|умру|разведусь|потеряю|обманут)\b/i.test(lowerText);
+      const uncertainWords = /\b(может|возможно|наверное|кажется|думаю|сомневаюсь|не знаю)\b/i.test(lowerText);
       
-      // Корректировки на основе тональности
-      if (positiveWords && !negativeWords) yesThreshold = 75; // Больше шансов на ДА
-      if (negativeWords && !positiveWords) yesThreshold = 35; // Больше шансов на НЕТ
+      // 2. Анализ типа вопроса
+      const aboutLove = /\b(любовь|любит|отношения|свадьба|замуж|парень|девушка|муж|жена)\b/i.test(lowerText);
+      const aboutMoney = /\b(деньги|работа|зарплата|богатство|купить|продать|бизнес)\b/i.test(lowerText);
+      const aboutHealth = /\b(здоровье|болезнь|лечение|врач|больница|лекарство)\b/i.test(lowerText);
+      const aboutFuture = /\b(будет|станет|произойдет|случится|через|скоро|завтра|год)\b/i.test(lowerText);
       
-      // Корректировка на основе длины вопроса (длинные вопросы = больше раздумий = чаще НЕТ)
-      if (textLength > 50) yesThreshold -= 10;
-      if (textLength < 20) yesThreshold += 10;
+      // 3. Уникальный хеш вопроса для стабильности ответа на одинаковые вопросы
+      let questionHash = 0;
+      for (let i = 0; i < text.length; i++) {
+        questionHash = ((questionHash << 5) - questionHash + text.charCodeAt(i)) & 0x7fffffff;
+      }
+      const stableRandom = (questionHash % 100);
       
-      // Корректировка на основе времени (утром больше ДА, вечером больше НЕТ)
+      // 4. Базовая вероятность зависит от типа вопроса
+      let yesThreshold = 50;
+      
+      // Тематические корректировки
+      if (aboutLove) yesThreshold = 65; // Любовь чаще положительна
+      if (aboutMoney) yesThreshold = 45; // Деньги сложнее получить
+      if (aboutHealth) yesThreshold = uncertainWords ? 40 : 60; // Здоровье зависит от уверенности
+      if (aboutFuture) yesThreshold = 55; // Будущее слегка оптимистично
+      
+      // Тональные корректировки
+      if (positiveWords && !negativeWords) yesThreshold += 20;
+      if (negativeWords && !positiveWords) yesThreshold -= 25;
+      if (uncertainWords) yesThreshold -= 10;
+      
+      // Структурные корректировки
+      if (textLength > 60) yesThreshold -= 15; // Длинные вопросы = больше сомнений
+      if (textLength < 15) yesThreshold += 10; // Короткие = быстрые решения
+      if (wordsCount === 1) yesThreshold += 15; // Одно слово = прямой ответ
+      
+      // Временные корректировки
       const hour = new Date().getHours();
-      if (hour >= 6 && hour <= 12) yesThreshold += 5; // Утро - больше оптимизма
-      if (hour >= 20 || hour <= 5) yesThreshold -= 5; // Вечер/ночь - больше осторожности
+      const day = new Date().getDay();
+      if (hour >= 6 && hour <= 10) yesThreshold += 8; // Утренний оптимизм
+      if (hour >= 22 || hour <= 5) yesThreshold -= 12; // Ночные сомнения
+      if (day === 1) yesThreshold -= 5; // Понедельник более пессимистичен
+      if (day === 5 || day === 6) yesThreshold += 5; // Пятница/суббота более позитивны
       
-      const isYes = baseValue < yesThreshold;
+      // Числовые характеристики текста
+      if (vowels > consonants) yesThreshold += 5; // Больше гласных = мелодичнее = позитивнее
+      if (text.includes('?')) yesThreshold -= 3; // Вопросительный знак = больше сомнений
+      if (text.includes('!')) yesThreshold += 8; // Восклицательный = больше энергии
+      
+      // Финальное решение на основе стабильного хеша
+      const isYes = stableRandom < Math.max(10, Math.min(90, yesThreshold));
       
       return {
         type: 'yesno',
@@ -168,22 +200,49 @@ const Index = () => {
         angle: (letterIndex / alphabet.length) * 360 // Позиция буквы
       };
     } else {
-      // По умолчанию - да/нет с тем же умным алгоритмом
-      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет)\b/i.test(lowerText);
-      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль)\b/i.test(lowerText);
+      // По умолчанию - тот же сложный алгоритм
+      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет|выйду|замуж|женюсь|поможет|сбудется)\b/i.test(lowerText);
+      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль|умру|разведусь|потеряю|обманут)\b/i.test(lowerText);
+      const uncertainWords = /\b(может|возможно|наверное|кажется|думаю|сомневаюсь|не знаю)\b/i.test(lowerText);
       
-      let yesThreshold = 60;
+      const aboutLove = /\b(любовь|любит|отношения|свадьба|замуж|парень|девушка|муж|жена)\b/i.test(lowerText);
+      const aboutMoney = /\b(деньги|работа|зарплата|богатство|купить|продать|бизнес)\b/i.test(lowerText);
+      const aboutHealth = /\b(здоровье|болезнь|лечение|врач|больница|лекарство)\b/i.test(lowerText);
+      const aboutFuture = /\b(будет|станет|произойдет|случится|через|скоро|завтра|год)\b/i.test(lowerText);
       
-      if (positiveWords && !negativeWords) yesThreshold = 75;
-      if (negativeWords && !positiveWords) yesThreshold = 35;
-      if (textLength > 50) yesThreshold -= 10;
-      if (textLength < 20) yesThreshold += 10;
+      let questionHash = 0;
+      for (let i = 0; i < text.length; i++) {
+        questionHash = ((questionHash << 5) - questionHash + text.charCodeAt(i)) & 0x7fffffff;
+      }
+      const stableRandom = (questionHash % 100);
+      
+      let yesThreshold = 50;
+      
+      if (aboutLove) yesThreshold = 65;
+      if (aboutMoney) yesThreshold = 45;
+      if (aboutHealth) yesThreshold = uncertainWords ? 40 : 60;
+      if (aboutFuture) yesThreshold = 55;
+      
+      if (positiveWords && !negativeWords) yesThreshold += 20;
+      if (negativeWords && !positiveWords) yesThreshold -= 25;
+      if (uncertainWords) yesThreshold -= 10;
+      
+      if (textLength > 60) yesThreshold -= 15;
+      if (textLength < 15) yesThreshold += 10;
+      if (wordsCount === 1) yesThreshold += 15;
       
       const hour = new Date().getHours();
-      if (hour >= 6 && hour <= 12) yesThreshold += 5;
-      if (hour >= 20 || hour <= 5) yesThreshold -= 5;
+      const day = new Date().getDay();
+      if (hour >= 6 && hour <= 10) yesThreshold += 8;
+      if (hour >= 22 || hour <= 5) yesThreshold -= 12;
+      if (day === 1) yesThreshold -= 5;
+      if (day === 5 || day === 6) yesThreshold += 5;
       
-      const isYes = baseValue < yesThreshold;
+      if (vowels > consonants) yesThreshold += 5;
+      if (text.includes('?')) yesThreshold -= 3;
+      if (text.includes('!')) yesThreshold += 8;
+      
+      const isYes = stableRandom < Math.max(10, Math.min(90, yesThreshold));
       
       return {
         type: 'yesno',
