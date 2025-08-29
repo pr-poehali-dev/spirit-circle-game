@@ -102,7 +102,7 @@ const Index = () => {
 
         {/* Окно ввода текста */}
         <div className="mb-4">
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center gap-3">
             <input
               type="text"
               placeholder="Задайте свой вопрос..."
@@ -112,6 +112,15 @@ const Index = () => {
                 textShadow: '0 0 10px rgba(255,255,255,0.3)'
               }}
             />
+            <button
+              className="px-6 py-3 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik']"
+              style={{
+                backdropFilter: 'blur(10px)',
+                textShadow: '0 0 10px rgba(255,255,255,0.5)'
+              }}
+            >
+              ОК
+            </button>
           </div>
         </div>
 
