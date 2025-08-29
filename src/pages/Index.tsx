@@ -148,10 +148,10 @@ const Index = () => {
             }}
           >
             {hourNumbers.map((number, index) => {
-              const angle = (index / hourNumbers.length) * 360 - 90;
+              const angle = (index / hourNumbers.length) * 360;
               const radius = 220;
-              const x = Math.cos(angle * Math.PI / 180) * radius;
-              const y = Math.sin(angle * Math.PI / 180) * radius;
+              const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
+              const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
               return (
                 <div
                   key={number}
