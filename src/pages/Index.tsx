@@ -172,6 +172,43 @@ const Index = () => {
 
 
 
+          {/* Красная стрелка часов после 3 кликов */}
+          {clickCount >= 3 && (
+            <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2">
+              <div 
+                className="absolute w-0 h-0"
+                style={{
+                  transformOrigin: '0 0',
+                  animation: 'spin 4s linear infinite'
+                }}
+              >
+                <div
+                  className="absolute"
+                  style={{
+                    left: '-2px',
+                    top: '-180px',
+                    width: '4px',
+                    height: '180px',
+                    backgroundColor: '#dc2626',
+                    borderRadius: '2px'
+                  }}
+                />
+                {/* Центральная точка */}
+                <div
+                  className="absolute"
+                  style={{
+                    left: '-6px',
+                    top: '-6px',
+                    width: '12px',
+                    height: '12px',
+                    backgroundColor: '#dc2626',
+                    borderRadius: '50%'
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Игла в центре (когда черт пойман) */}
           {devilCaught && (
             <div 
