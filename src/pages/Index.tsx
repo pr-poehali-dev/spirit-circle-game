@@ -194,6 +194,20 @@ const Index = () => {
                     boxShadow: '0 0 8px rgba(220, 38, 38, 0.6)'
                   }}
                 />
+                {/* Указатель на конце стрелки */}
+                <div
+                  className="absolute z-30"
+                  style={{
+                    left: '-6px',
+                    top: '-250px',
+                    width: '0',
+                    height: '0',
+                    borderLeft: '6px solid transparent',
+                    borderRight: '6px solid transparent',
+                    borderBottom: '15px solid #dc2626',
+                    filter: 'drop-shadow(0 0 8px rgba(220, 38, 38, 0.6))'
+                  }}
+                />
                 {/* Центральная точка */}
                 <div
                   className="absolute z-30"
