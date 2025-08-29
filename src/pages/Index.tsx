@@ -100,6 +100,21 @@ const Index = () => {
           <p className="text-gray-400 text-lg">Кликните 3 раза в круг и поймайте черта</p>
         </div>
 
+        {/* Окно ввода текста */}
+        <div className="mb-4">
+          <div className="flex justify-start">
+            <input
+              type="text"
+              placeholder="Задайте свой вопрос..."
+              className="w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']"
+              style={{
+                backdropFilter: 'blur(10px)',
+                textShadow: '0 0 10px rgba(255,255,255,0.3)'
+              }}
+            />
+          </div>
+        </div>
+
         {/* Надписи ДА и НЕТ */}
         <div className="flex items-center justify-center gap-8">
           <div className="text-white text-2xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
