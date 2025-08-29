@@ -209,44 +209,7 @@ const Index = () => {
             </div>
           )}
 
-          {/* Стрелка часов в центре (когда черт пойман) */}
-          {devilCaught && (
-            <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2 z-20">
-              <div 
-                className="absolute w-0 h-0"
-                style={{
-                  transformOrigin: '0 0',
-                  animation: 'spin 6s linear infinite'
-                }}
-              >
-                <div
-                  className="absolute"
-                  style={{
-                    left: '-3px',
-                    top: '-150px',
-                    width: '6px',
-                    height: '150px',
-                    backgroundColor: '#silver',
-                    borderRadius: '3px',
-                    filter: 'drop-shadow(0 0 10px silver)'
-                  }}
-                />
-                {/* Центральная точка */}
-                <div
-                  className="absolute"
-                  style={{
-                    left: '-8px',
-                    top: '-8px',
-                    width: '16px',
-                    height: '16px',
-                    backgroundColor: '#silver',
-                    borderRadius: '50%',
-                    filter: 'drop-shadow(0 0 10px silver)'
-                  }}
-                />
-              </div>
-            </div>
-          )}
+
 
 
 
