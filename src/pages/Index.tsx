@@ -186,9 +186,9 @@ const Index = () => {
                   className="absolute z-30"
                   style={{
                     left: '-1px',
-                    top: '-200px',
+                    top: '-220px',
                     width: '2px',
-                    height: '200px',
+                    height: '220px',
                     backgroundColor: '#dc2626',
                     borderRadius: '1px',
                     boxShadow: '0 0 8px rgba(220, 38, 38, 0.6)'
@@ -198,10 +198,10 @@ const Index = () => {
                 <div
                   className="absolute z-30"
                   style={{
-                    left: '-8px',
-                    top: '-8px',
-                    width: '16px',
-                    height: '16px',
+                    left: '-4px',
+                    top: '-4px',
+                    width: '8px',
+                    height: '8px',
                     backgroundColor: '#dc2626',
                     borderRadius: '50%',
                     boxShadow: '0 0 10px rgba(220, 38, 38, 0.8)'
