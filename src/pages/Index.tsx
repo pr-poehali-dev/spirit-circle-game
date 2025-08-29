@@ -157,6 +157,14 @@ const Index = () => {
   const handlePrediction = () => {
     if (!inputText.trim()) return;
     
+    // Если еще не кликали 3 раза, активируем стрелку
+    if (clickCount < 3) {
+      setClickCount(3);
+      setShowDevil(true);
+      setIsDevilMoving(true);
+      moveDevil();
+    }
+    
     setIsAnalyzing(true);
     setShouldStop(false);
     
@@ -418,13 +426,7 @@ const Index = () => {
                 {finalAnswer}
               </div>
             </div>
-            <button
-              onClick={resetGame}
-              className="mt-4 px-6 py-2 bg-white/20 border border-white/30 rounded-lg text-white hover:bg-white/30 transition-all duration-300 font-['Rubik']"
-              style={{backdropFilter: 'blur(10px)'}}
-            >
-              Задать новый вопрос
-            </button>
+
           </div>
         )}
 
