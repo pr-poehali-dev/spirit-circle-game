@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import PredictionResult from './PredictionResult';
 
 interface QuestionInputProps {
   onPrediction: (text: string) => void;
   isAnalyzing: boolean;
+  finalAnswer: string;
 }
 
-const QuestionInput = ({ onPrediction, isAnalyzing }: QuestionInputProps) => {
+const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer }: QuestionInputProps) => {
   const [inputText, setInputText] = useState('');
 
   const handleSubmit = () => {
@@ -41,6 +43,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing }: QuestionInputProps) => {
         >
           {isAnalyzing ? 'Гадаю...' : 'ОК'}
         </button>
+        <PredictionResult finalAnswer={finalAnswer} />
       </div>
     </div>
   );

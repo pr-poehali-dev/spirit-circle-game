@@ -1,7 +1,6 @@
 import { useGameLogic } from '@/hooks/useGameLogic';
 import QuestionInput from '@/components/QuestionInput';
 import FortuneWheel from '@/components/FortuneWheel';
-import PredictionResult from '@/components/PredictionResult';
 
 const Index = () => {
   const {
@@ -36,6 +35,7 @@ const Index = () => {
         <QuestionInput 
           onPrediction={handlePrediction}
           isAnalyzing={isAnalyzing}
+          finalAnswer={finalAnswer}
         />
 
         {/* Колесо фортуны */}
@@ -50,9 +50,6 @@ const Index = () => {
           finalAngle={finalAngle}
           onCircleClick={handleCircleClick}
         />
-
-        {/* Результат предсказания */}
-        <PredictionResult finalAnswer={finalAnswer} />
       </div>
     </div>
   );
