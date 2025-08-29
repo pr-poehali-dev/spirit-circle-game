@@ -51,7 +51,7 @@ const Index = () => {
         setShowDevil(true);
         setIsDevilMoving(true);
         moveDevil();
-        return 0;
+        return newCount; // Сохраняем счетчик для показа стрелки
       }
       return newCount;
     });
