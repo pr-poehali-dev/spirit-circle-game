@@ -15,6 +15,12 @@ export const useGameLogic = () => {
   const circleRef = useRef<HTMLDivElement>(null);
 
   const handleCircleClick = (e: React.MouseEvent) => {
+    // Если был получен ответ, сбрасываем игру
+    if (shouldStop || finalAnswer) {
+      resetGame();
+      return;
+    }
+
     if (showDevil && !devilCaught) {
       const rect = circleRef.current?.getBoundingClientRect();
       if (rect) {
