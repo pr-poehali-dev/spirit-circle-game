@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const Index = () => {
   const [clickCount, setClickCount] = useState(0);
@@ -9,7 +9,16 @@ const Index = () => {
   const circleRef = useRef<HTMLDivElement>(null);
 
   const alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'.split('');
-  const numbers = Array.from({length: 24}, (_, i) => (i + 1).toString());
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const hourNumbers = Array.from({length: 12}, (_, i) => (i + 1).toString());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleCircleClick = (e: React.MouseEvent) => {
     if (showDevil && !devilCaught) {
@@ -138,15 +147,15 @@ const Index = () => {
               animation: 'spin 15s linear infinite reverse'
             }}
           >
-            {numbers.map((number, index) => {
-              const angle = (index / numbers.length) * 360;
-              const radius = 220; // меньший радиус для цифр
+            {hourNumbers.map((number, index) => {
+              const angle = (index / hourNumbers.length) * 360;
+              const radius = 220;
               const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
               const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
               return (
                 <div
                   key={number}
-                  className="absolute text-lg font-bold text-gray-600 font-['Rubik']"
+                  className="absolute text-xl font-bold text-black font-['Rubik']"
                   style={{
                     left: `calc(50% + ${x}px)`,
                     top: `calc(50% + ${y}px)`,
@@ -158,6 +167,11 @@ const Index = () => {
                 </div>
               );
             })}
+            
+            {/* Текущее время в центре */}
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-black font-['Rubik'] bg-white/80 px-4 py-2 rounded-lg shadow-lg">
+              {currentTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </div>
           </div>
 
 
