@@ -125,10 +125,33 @@ const Index = () => {
     const baseValue = (vowels * 7 + consonants * 3 + textLength * 2 + wordsCount * 5) % 100;
     
     if (isYesNoQuestion) {
+      // Неравномерный алгоритм для ДА/НЕТ
+      // Анализируем тональность вопроса
+      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет)\b/i.test(lowerText);
+      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль)\b/i.test(lowerText);
+      
+      // Базовая вероятность (60% ДА, 40% НЕТ)
+      let yesThreshold = 60;
+      
+      // Корректировки на основе тональности
+      if (positiveWords && !negativeWords) yesThreshold = 75; // Больше шансов на ДА
+      if (negativeWords && !positiveWords) yesThreshold = 35; // Больше шансов на НЕТ
+      
+      // Корректировка на основе длины вопроса (длинные вопросы = больше раздумий = чаще НЕТ)
+      if (textLength > 50) yesThreshold -= 10;
+      if (textLength < 20) yesThreshold += 10;
+      
+      // Корректировка на основе времени (утром больше ДА, вечером больше НЕТ)
+      const hour = new Date().getHours();
+      if (hour >= 6 && hour <= 12) yesThreshold += 5; // Утро - больше оптимизма
+      if (hour >= 20 || hour <= 5) yesThreshold -= 5; // Вечер/ночь - больше осторожности
+      
+      const isYes = baseValue < yesThreshold;
+      
       return {
         type: 'yesno',
-        value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
-        angle: baseValue % 2 === 0 ? 0 : 180 // ДА справа (0°), НЕТ слева (180°)
+        value: isYes ? 'ДА' : 'НЕТ',
+        angle: isYes ? 0 : 180 // ДА справа (0°), НЕТ слева (180°)
       };
     } else if (isNumberQuestion) {
       const number = (baseValue % 12) + 1;
@@ -145,11 +168,27 @@ const Index = () => {
         angle: (letterIndex / alphabet.length) * 360 // Позиция буквы
       };
     } else {
-      // По умолчанию - да/нет
+      // По умолчанию - да/нет с тем же умным алгоритмом
+      const positiveWords = /\b(хорошо|удача|счастье|любовь|радость|успех|можно|стоит|получится|везет)\b/i.test(lowerText);
+      const negativeWords = /\b(плохо|беда|проблема|болезнь|грусть|неудача|нельзя|опасно|провал|боль)\b/i.test(lowerText);
+      
+      let yesThreshold = 60;
+      
+      if (positiveWords && !negativeWords) yesThreshold = 75;
+      if (negativeWords && !positiveWords) yesThreshold = 35;
+      if (textLength > 50) yesThreshold -= 10;
+      if (textLength < 20) yesThreshold += 10;
+      
+      const hour = new Date().getHours();
+      if (hour >= 6 && hour <= 12) yesThreshold += 5;
+      if (hour >= 20 || hour <= 5) yesThreshold -= 5;
+      
+      const isYes = baseValue < yesThreshold;
+      
       return {
         type: 'yesno',
-        value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
-        angle: baseValue % 2 === 0 ? 0 : 180
+        value: isYes ? 'ДА' : 'НЕТ',
+        angle: isYes ? 0 : 180
       };
     }
   };
