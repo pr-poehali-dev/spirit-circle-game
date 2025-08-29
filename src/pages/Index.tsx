@@ -186,9 +186,9 @@ const Index = () => {
                   className="absolute z-30"
                   style={{
                     left: '-1px',
-                    top: '-220px',
+                    top: '-240px',
                     width: '2px',
-                    height: '220px',
+                    height: '240px',
                     backgroundColor: '#dc2626',
                     borderRadius: '1px',
                     boxShadow: '0 0 8px rgba(220, 38, 38, 0.6)'
