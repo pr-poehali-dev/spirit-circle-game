@@ -267,18 +267,7 @@ const Index = () => {
 
 
 
-        {/* Подсказки */}
-        {showDevil && !devilCaught && (
-          <div className="text-center mt-6 animate-fade-in">
-            <p className="text-red-400 text-lg font-['Rubik']">Черт появился! Поймайте его! 👹</p>
-            <button 
-              onClick={resetGame}
-              className="mt-2 px-4 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded text-sm transition-colors"
-            >
-              Начать заново
-            </button>
-          </div>
-        )}
+
       </div>
     </div>
   );
