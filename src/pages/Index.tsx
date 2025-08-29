@@ -167,11 +167,7 @@ const Index = () => {
                 </div>
               );
             })}
-            
-            {/* Текущее время в центре */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-black font-['Rubik'] bg-white/80 px-4 py-2 rounded-lg shadow-lg">
-              {currentTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-            </div>
+
           </div>
 
 
