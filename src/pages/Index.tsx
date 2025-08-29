@@ -100,13 +100,19 @@ const Index = () => {
           <p className="text-gray-400 text-lg">Кликните 3 раза в круг и поймайте черта</p>
         </div>
 
-        {/* Основной круг */}
-        <div 
-          ref={circleRef}
-          className="relative w-[648px] h-[648px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] border-2 border-black" 
-          onClick={handleCircleClick}
-          style={{
-            background: devilCaught 
+        {/* Надписи ДА и НЕТ */}
+        <div className="flex items-center justify-center gap-8">
+          <div className="text-white text-6xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
+            НЕТ
+          </div>
+          
+          {/* Основной круг */}
+          <div 
+            ref={circleRef}
+            className="relative w-[648px] h-[648px] bg-white rounded-full cursor-pointer select-none shadow-[0_0_50px_rgba(255,255,255,0.3)] border-2 border-black" 
+            onClick={handleCircleClick}
+            style={{
+              background: devilCaught 
               ? 'radial-gradient(circle, #ffffff 0%, #f0f0f0 100%)' 
               : 'white'
           }}
@@ -261,6 +267,11 @@ const Index = () => {
               </div>
             </div>
           )}
+        </div>
+          
+          <div className="text-white text-6xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
+            ДА
+          </div>
         </div>
 
 
