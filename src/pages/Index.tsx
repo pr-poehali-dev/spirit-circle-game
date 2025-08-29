@@ -174,7 +174,7 @@ const Index = () => {
 
           {/* Красная стрелка часов после 3 кликов */}
           {clickCount >= 3 && (
-            <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute left-1/2 top-1/2 w-0 h-0 transform -translate-x-1/2 -translate-y-1/2 z-30">
               <div 
                 className="absolute w-0 h-0"
                 style={{
@@ -183,26 +183,28 @@ const Index = () => {
                 }}
               >
                 <div
-                  className="absolute"
+                  className="absolute z-30"
                   style={{
-                    left: '-2px',
-                    top: '-180px',
-                    width: '4px',
-                    height: '180px',
+                    left: '-3px',
+                    top: '-160px',
+                    width: '6px',
+                    height: '160px',
                     backgroundColor: '#dc2626',
-                    borderRadius: '2px'
+                    borderRadius: '3px',
+                    boxShadow: '0 0 10px rgba(220, 38, 38, 0.8)'
                   }}
                 />
                 {/* Центральная точка */}
                 <div
-                  className="absolute"
+                  className="absolute z-30"
                   style={{
-                    left: '-6px',
-                    top: '-6px',
-                    width: '12px',
-                    height: '12px',
+                    left: '-8px',
+                    top: '-8px',
+                    width: '16px',
+                    height: '16px',
                     backgroundColor: '#dc2626',
-                    borderRadius: '50%'
+                    borderRadius: '50%',
+                    boxShadow: '0 0 10px rgba(220, 38, 38, 0.8)'
                   }}
                 />
               </div>
