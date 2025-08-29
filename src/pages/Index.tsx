@@ -151,7 +151,7 @@ const Index = () => {
       return {
         type: 'yesno',
         value: isYes ? 'ДА' : 'НЕТ',
-        angle: isYes ? 0 : 180 // ДА справа (0°), НЕТ слева (180°)
+        angle: isYes ? 90 : 270 // ДА направо (90°), НЕТ налево (270°)
       };
     } else if (isNumberQuestion) {
       const number = (baseValue % 12) + 1;
@@ -188,7 +188,7 @@ const Index = () => {
       return {
         type: 'yesno',
         value: isYes ? 'ДА' : 'НЕТ',
-        angle: isYes ? 0 : 180
+        angle: isYes ? 90 : 270
       };
     }
   };
