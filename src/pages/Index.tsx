@@ -11,6 +11,7 @@ const Index = () => {
   const [finalAnswer, setFinalAnswer] = useState('');
   const [arrowSpeed, setArrowSpeed] = useState(4);
   const [shouldStop, setShouldStop] = useState(false);
+  const [finalAngle, setFinalAngle] = useState(0);
   const circleRef = useRef<HTMLDivElement>(null);
 
   const alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'.split('');
@@ -99,6 +100,7 @@ const Index = () => {
     setFinalAnswer('');
     setArrowSpeed(4);
     setShouldStop(false);
+    setFinalAngle(0);
   };
 
   // Алгоритм анализа текста для предсказаний
@@ -126,7 +128,7 @@ const Index = () => {
       return {
         type: 'yesno',
         value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
-        angle: baseValue % 2 === 0 ? 90 : 270 // ДА справа, НЕТ слева
+        angle: baseValue % 2 === 0 ? 0 : 180 // ДА справа (0°), НЕТ слева (180°)
       };
     } else if (isNumberQuestion) {
       const number = (baseValue % 12) + 1;
@@ -147,7 +149,7 @@ const Index = () => {
       return {
         type: 'yesno',
         value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
-        angle: baseValue % 2 === 0 ? 90 : 270
+        angle: baseValue % 2 === 0 ? 0 : 180
       };
     }
   };
@@ -181,6 +183,7 @@ const Index = () => {
     // Остановка через заданное время
     setTimeout(() => {
       clearInterval(slowDownInterval);
+      setFinalAngle(result.angle);
       setShouldStop(true);
       setFinalAnswer(result.value);
       setIsAnalyzing(false);
@@ -311,7 +314,8 @@ const Index = () => {
                 className="absolute w-0 h-0"
                 style={{
                   transformOrigin: '0 0',
-                  animation: shouldStop ? 'none' : `spin ${arrowSpeed}s linear infinite`
+                  animation: shouldStop ? 'none' : `spin ${arrowSpeed}s linear infinite`,
+                  transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined
                 }}
               >
                 <div
