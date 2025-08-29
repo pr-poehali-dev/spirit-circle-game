@@ -102,7 +102,7 @@ const Index = () => {
 
         {/* Надписи ДА и НЕТ */}
         <div className="flex items-center justify-center gap-8">
-          <div className="text-white text-6xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
+          <div className="text-white text-2xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
             НЕТ
           </div>
           
@@ -269,7 +269,7 @@ const Index = () => {
           )}
         </div>
           
-          <div className="text-white text-6xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
+          <div className="text-white text-2xl font-bold font-['Rubik'] select-none" style={{textShadow: '0 0 20px rgba(255,255,255,0.5)'}}>
             ДА
           </div>
         </div>
