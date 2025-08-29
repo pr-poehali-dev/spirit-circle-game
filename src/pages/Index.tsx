@@ -101,7 +101,7 @@ const Index = () => {
         </div>
 
         {/* Окно ввода текста */}
-        <div className="mb-4">
+        <div className="mb-4 -ml-32">
           <div className="flex justify-start">
             <input
               type="text"
