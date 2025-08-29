@@ -92,8 +92,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="relative">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4 overflow-hidden">
+      <div className="relative overflow-hidden">
         {/* Главный заголовок */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 font-['Rubik']" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание на Черта</h1>
