@@ -6,6 +6,11 @@ const Index = () => {
   const [devilCaught, setDevilCaught] = useState(false);
   const [devilPosition, setDevilPosition] = useState({ x: 50, y: 50 });
   const [isDevilMoving, setIsDevilMoving] = useState(false);
+  const [inputText, setInputText] = useState('');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [finalAnswer, setFinalAnswer] = useState('');
+  const [arrowSpeed, setArrowSpeed] = useState(4);
+  const [shouldStop, setShouldStop] = useState(false);
   const circleRef = useRef<HTMLDivElement>(null);
 
   const alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'.split('');
@@ -89,6 +94,97 @@ const Index = () => {
     setShowDevil(false);
     setDevilCaught(false);
     setIsDevilMoving(false);
+    setInputText('');
+    setIsAnalyzing(false);
+    setFinalAnswer('');
+    setArrowSpeed(4);
+    setShouldStop(false);
+  };
+
+  // Алгоритм анализа текста для предсказаний
+  const analyzeText = (text: string) => {
+    const lowerText = text.toLowerCase();
+    
+    // Подсчет различных характеристик текста
+    const vowels = (text.match(/[аеиоуыэюя]/gi) || []).length;
+    const consonants = (text.match(/[бвгджзйклмнпрстфхцчшщ]/gi) || []).length;
+    const textLength = text.length;
+    const wordsCount = text.trim().split(/\s+/).length;
+    
+    // Определение типа вопроса и генерация результата
+    const isYesNoQuestion = /\b(ли|да|нет|будет|стоит|можно|нужно)\b/.test(lowerText) || 
+                          text.includes('?');
+    
+    const isNumberQuestion = /\b(сколько|когда|во сколько|через|лет|дней|месяцев)\b/.test(lowerText);
+    
+    const isLetterQuestion = /\b(буква|имя|название|как зовут|начинается)\b/.test(lowerText);
+    
+    // Базовый расчет на основе характеристик текста
+    const baseValue = (vowels * 7 + consonants * 3 + textLength * 2 + wordsCount * 5) % 100;
+    
+    if (isYesNoQuestion) {
+      return {
+        type: 'yesno',
+        value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
+        angle: baseValue % 2 === 0 ? 90 : 270 // ДА справа, НЕТ слева
+      };
+    } else if (isNumberQuestion) {
+      const number = (baseValue % 12) + 1;
+      return {
+        type: 'number',
+        value: number.toString(),
+        angle: (number - 1) * 30 // Позиция числа на циферблате
+      };
+    } else if (isLetterQuestion) {
+      const letterIndex = baseValue % alphabet.length;
+      return {
+        type: 'letter',
+        value: alphabet[letterIndex],
+        angle: (letterIndex / alphabet.length) * 360 // Позиция буквы
+      };
+    } else {
+      // По умолчанию - да/нет
+      return {
+        type: 'yesno',
+        value: baseValue % 2 === 0 ? 'ДА' : 'НЕТ',
+        angle: baseValue % 2 === 0 ? 90 : 270
+      };
+    }
+  };
+
+  const handlePrediction = () => {
+    if (!inputText.trim()) return;
+    
+    setIsAnalyzing(true);
+    setShouldStop(false);
+    
+    // Анализируем текст
+    const result = analyzeText(inputText);
+    
+    // Случайное время вращения от 2 до 7 секунд
+    const spinTime = 2000 + Math.random() * 5000;
+    
+    // Постепенное замедление стрелки
+    let currentSpeed = 4;
+    const slowDownInterval = setInterval(() => {
+      currentSpeed *= 0.95; // Замедление на 5% каждые 100мс
+      setArrowSpeed(currentSpeed);
+      
+      if (currentSpeed < 0.1) {
+        clearInterval(slowDownInterval);
+        setShouldStop(true);
+        setFinalAnswer(result.value);
+        setIsAnalyzing(false);
+      }
+    }, 100);
+    
+    // Остановка через заданное время
+    setTimeout(() => {
+      clearInterval(slowDownInterval);
+      setShouldStop(true);
+      setFinalAnswer(result.value);
+      setIsAnalyzing(false);
+    }, spinTime);
   };
 
   return (
@@ -105,21 +201,27 @@ const Index = () => {
           <div className="flex justify-center items-center gap-3">
             <input
               type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
               placeholder="Задайте свой вопрос..."
               className="w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']"
               style={{
                 backdropFilter: 'blur(10px)',
                 textShadow: '0 0 10px rgba(255,255,255,0.3)'
               }}
+              onKeyDown={(e) => e.key === 'Enter' && handlePrediction()}
+              disabled={isAnalyzing}
             />
             <button
-              className="px-6 py-3 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik']"
+              onClick={handlePrediction}
+              disabled={!inputText.trim() || isAnalyzing}
+              className="px-6 py-3 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik'] disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 backdropFilter: 'blur(10px)',
                 textShadow: '0 0 10px rgba(255,255,255,0.5)'
               }}
             >
-              ОК
+              {isAnalyzing ? 'Гадаю...' : 'ОК'}
             </button>
           </div>
         </div>
@@ -209,7 +311,7 @@ const Index = () => {
                 className="absolute w-0 h-0"
                 style={{
                   transformOrigin: '0 0',
-                  animation: 'spin 4s linear infinite'
+                  animation: shouldStop ? 'none' : `spin ${arrowSpeed}s linear infinite`
                 }}
               >
                 <div
@@ -302,6 +404,25 @@ const Index = () => {
 
 
 
+
+        {/* Результат предсказания */}
+        {finalAnswer && (
+          <div className="text-center mt-6">
+            <div className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg shadow-lg">
+              <div className="text-sm text-gray-200 mb-1">Ответ:</div>
+              <div className="text-3xl font-bold font-['Rubik']" style={{textShadow: '0 0 15px rgba(255,255,255,0.7)'}}>
+                {finalAnswer}
+              </div>
+            </div>
+            <button
+              onClick={resetGame}
+              className="mt-4 px-6 py-2 bg-white/20 border border-white/30 rounded-lg text-white hover:bg-white/30 transition-all duration-300 font-['Rubik']"
+              style={{backdropFilter: 'blur(10px)'}}
+            >
+              Задать новый вопрос
+            </button>
+          </div>
+        )}
 
       </div>
     </div>
