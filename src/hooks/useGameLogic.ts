@@ -12,6 +12,7 @@ export const useGameLogic = () => {
   const [arrowSpeed, setArrowSpeed] = useState(4);
   const [shouldStop, setShouldStop] = useState(false);
   const [finalAngle, setFinalAngle] = useState(0);
+  const [goldCoins, setGoldCoins] = useState(100); // Начальное количество монет
   const circleRef = useRef<HTMLDivElement>(null);
 
   const handleCircleClick = (e: React.MouseEvent) => {
@@ -47,6 +48,10 @@ export const useGameLogic = () => {
 
     setClickCount(prev => {
       const newCount = prev + 1;
+      
+      // Списываем 13 монет за каждое нажатие
+      setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
+      
       if (newCount >= 3) {
         setShowDevil(true);
         setIsDevilMoving(true);
@@ -107,6 +112,9 @@ export const useGameLogic = () => {
       moveDevil();
     }
     
+    // Списываем 13 монет за гадание
+    setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
+    
     setIsAnalyzing(true);
     setShouldStop(false);
     
@@ -151,6 +159,7 @@ export const useGameLogic = () => {
     arrowSpeed,
     shouldStop,
     finalAngle,
+    goldCoins,
     circleRef,
     handleCircleClick,
     moveDevil,
