@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4 overflow-hidden">
       {/* Счетчик монет в правом верхнем углу */}
-      <div className="fixed top-4 right-4 bg-yellow-600 text-black px-4 py-2 rounded-lg font-bold text-lg shadow-lg border-2 border-yellow-400" style={{textShadow: '0 0 10px rgba(255,215,0,0.5)'}}>
+      <div className="fixed top-4 right-4 bg-yellow-600 text-black px-4 py-2 rounded-lg font-bold text-lg shadow-lg border-2 border-gray-400" style={{textShadow: '0 0 10px rgba(255,215,0,0.5)'}}>
         💰 {goldCoins}
       </div>
       
