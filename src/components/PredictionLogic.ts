@@ -109,8 +109,8 @@ const analyzeYesNoQuestion = (
   if (text.includes('?')) yesThreshold -= 3; // Вопросительный знак = больше сомнений
   if (text.includes('!')) yesThreshold += 8; // Восклицательный = больше энергии
   
-  // Финальное решение на основе стабильного хеша
-  const isYes = stableRandom < Math.max(10, Math.min(90, yesThreshold));
+  // Финальное решение - ДА 60%, НЕТ 40%
+  const isYes = stableRandom < 60;
   
   return {
     type: 'yesno',
@@ -170,7 +170,8 @@ const analyzeDefaultQuestion = (
   if (text.includes('?')) yesThreshold -= 3;
   if (text.includes('!')) yesThreshold += 8;
   
-  const isYes = stableRandom < Math.max(10, Math.min(90, yesThreshold));
+  // Финальное решение - ДА 60%, НЕТ 40%
+  const isYes = stableRandom < 60;
   
   return {
     type: 'yesno',
