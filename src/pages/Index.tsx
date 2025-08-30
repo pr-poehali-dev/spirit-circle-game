@@ -29,9 +29,7 @@ const Index = () => {
       <div className="relative overflow-hidden">
         {/* Главный заголовок */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2 font-['Rubik']" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>
-            Гадание на Черта
-          </h1>
+          <h1 className="text-4xl font-bold text-white mb-2 font-['Rubik']" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание на Демона</h1>
           <p className="text-gray-400 text-lg">
             Кликните 3 раза в круг и поймайте черта
           </p>
