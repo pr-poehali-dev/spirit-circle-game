@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { useGameLogic } from '@/hooks/useGameLogic';
 import QuestionInput from '@/components/QuestionInput';
 import FortuneWheel from '@/components/FortuneWheel';
+import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const [showInstructions, setShowInstructions] = useState(false);
+  
   const {
     clickCount,
     showDevil,
@@ -21,9 +25,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-start p-4 overflow-hidden">
-      {/* Счетчик монет в правом верхнем углу */}
-      <div className="fixed top-4 right-4 z-50 text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
-        💰 {goldCoins}
+      {/* Счетчик монет и кнопка инструкций в правом верхнем углу */}
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <button
+          onClick={() => setShowInstructions(true)}
+          className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+          title="Инструкция"
+        >
+          <Icon name="HelpCircle" size={20} />
+        </button>
+        <div className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
+          💰 {goldCoins}
+        </div>
       </div>
       
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
@@ -34,43 +47,7 @@ const Index = () => {
           </h1>
         </div>
 
-        {/* Инструкция */}
-        <div className="w-full mb-6 px-4 max-w-3xl mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-lg p-4 sm:p-6 backdrop-blur-sm">
-            <div className="text-white font-['Rubik']">
-              <p className="text-sm sm:text-base mb-4 text-gray-300">
-                Гадание на Демоне — это популярная форма шаманского гадания, которая включает в себя использование круга с символами и буквами.
-              </p>
-              
-              <div className="mb-4">
-                <h3 className="text-lg font-bold mb-2 text-white">Процесс гадания:</h3>
-                <ul className="text-sm sm:text-base text-gray-300 space-y-2 pl-4">
-                  <li>• <strong>Установите намерение:</strong> Сосредоточьтесь на вопросе, на который хотите получить ответ. Желательно, чтобы вопрос был закрытым (ответы "Да" или "Нет").</li>
-                  <li>• В строке ввода текста задайте вопрос и нажмите «ок»</li>
-                  <li>• Указатель размещается в центре круга</li>
-                  <li>• <strong>Ожидание ответа:</strong> Указатель начнет двигаться сам по кругу в ответ на вопрос, останавливаясь на буквах, цифрах или отметках "Да"/"Нет".</li>
-                </ul>
-              </div>
 
-              <div className="mb-4">
-                <h3 className="text-lg font-bold mb-2 text-white">Заключение:</h3>
-                <p className="text-sm sm:text-base text-gray-300">
-                  После завершения гадания поблагодарите Демона (награда ему монеты 💰)
-                </p>
-              </div>
-
-              <div className="border-t border-white/20 pt-4">
-                <h3 className="text-lg font-bold mb-2 text-orange-400">Важно:</h3>
-                <ul className="text-sm sm:text-base text-gray-300 space-y-1 pl-4">
-                  <li>• Подходите к этому гаданию с открытым и уважительным умом.</li>
-                  <li>• Не используйте его слишком часто, чтобы не стать зависимым от советов извне.</li>
-                  <li>• Убедитесь, что все участники согласны на участие в подобном процессе.</li>
-                </ul>
-                <p className="text-center mt-4 text-lg font-bold text-green-400">Удачи в гадании! 🔮</p>
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Окно ввода текста */}
         <div className="w-full mb-4 sm:mb-6">
@@ -96,6 +73,58 @@ const Index = () => {
           />
         </div>
       </div>
+
+      {/* Модальное окно с инструкцией */}
+      {showInstructions && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-gray-900 border border-white/20 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-white font-['Rubik']">Как гадать на Демоне</h2>
+                <button
+                  onClick={() => setShowInstructions(false)}
+                  className="text-white hover:text-gray-300 transition-colors"
+                >
+                  <Icon name="X" size={24} />
+                </button>
+              </div>
+              
+              <div className="text-white font-['Rubik']">
+                <p className="text-base mb-4 text-gray-300">
+                  Гадание на Демоне — это популярная форма шаманского гадания, которая включает в себя использование круга с символами и буквами.
+                </p>
+                
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold mb-2 text-white">Процесс гадания:</h3>
+                  <ul className="text-base text-gray-300 space-y-2 pl-4">
+                    <li>• <strong>Установите намерение:</strong> Сосредоточьтесь на вопросе, на который хотите получить ответ. Желательно, чтобы вопрос был закрытым (ответы "Да" или "Нет").</li>
+                    <li>• В строке ввода текста задайте вопрос и нажмите «ок»</li>
+                    <li>• Указатель размещается в центре круга</li>
+                    <li>• <strong>Ожидание ответа:</strong> Указатель начнет двигаться сам по кругу в ответ на вопрос, останавливаясь на буквах, цифрах или отметках "Да"/"Нет".</li>
+                  </ul>
+                </div>
+
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold mb-2 text-white">Заключение:</h3>
+                  <p className="text-base text-gray-300">
+                    После завершения гадания поблагодарите Демона (награда ему монеты 💰)
+                  </p>
+                </div>
+
+                <div className="border-t border-white/20 pt-4">
+                  <h3 className="text-lg font-bold mb-2 text-orange-400">Важно:</h3>
+                  <ul className="text-base text-gray-300 space-y-1 pl-4">
+                    <li>• Подходите к этому гаданию с открытым и уважительным умом.</li>
+                    <li>• Не используйте его слишком часто, чтобы не стать зависимым от советов извне.</li>
+                    <li>• Убедитесь, что все участники согласны на участие в подобном процессе.</li>
+                  </ul>
+                  <p className="text-center mt-4 text-lg font-bold text-green-400">Удачи в гадании! 🔮</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
