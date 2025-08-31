@@ -25,8 +25,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-start p-4 overflow-hidden">
-      {/* Счетчик монет и кнопка инструкций в правом верхнем углу */}
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+      {/* Кнопка инструкций в левом верхнем углу */}
+      <div className="fixed top-4 left-4 z-50">
         <button
           onClick={() => setShowInstructions(true)}
           className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
@@ -34,6 +34,10 @@ const Index = () => {
         >
           <Icon name="HelpCircle" size={20} />
         </button>
+      </div>
+
+      {/* Счетчик монет в правом верхнем углу */}
+      <div className="fixed top-4 right-4 z-50">
         <div className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
           💰 {goldCoins}
         </div>
