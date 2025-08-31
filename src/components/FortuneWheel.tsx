@@ -25,7 +25,7 @@ const FortuneWheel = ({
   onCircleClick
 }: FortuneWheelProps) => {
   const circleRef = useRef<HTMLDivElement>(null);
-  const hourNumbers = Array.from({length: 12}, (_, i) => (i + 1).toString());
+  const hourNumbers = Array.from({length: 9}, (_, i) => (i + 1).toString());
 
   return (
     <div className="w-full flex items-center justify-center">
