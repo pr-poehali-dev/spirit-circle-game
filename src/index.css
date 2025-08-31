@@ -218,5 +218,44 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Улучшенная поддержка касаний */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Улучшения для мобильных устройств */
+  button,
+  .cursor-pointer {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Убираем свечение при нажатии на iOS */
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus,
+  .cursor-pointer:focus {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Минимальный размер для касаний (44px рекомендуется для iOS) */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  @media (max-width: 640px) {
+    /* На мобильных устройствах увеличиваем размеры для удобства касания */
+    input {
+      font-size: 16px; /* Предотвращает зум в Safari при фокусе */
+    }
   }
 }

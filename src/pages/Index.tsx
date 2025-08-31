@@ -20,38 +20,46 @@ const Index = () => {
   } = useGameLogic();
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4 overflow-hidden">
+    <div className="min-h-screen bg-black flex flex-col items-center justify-start p-4 overflow-hidden">
       {/* Счетчик монет в правом верхнем углу */}
-      <div className="fixed top-4 right-4 text-white px-4 py-2 font-bold text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
+      <div className="fixed top-4 right-4 z-50 text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
         💰 {goldCoins}
       </div>
       
-      <div className="relative overflow-hidden">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
         {/* Главный заголовок */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2 font-['Rubik']" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание на Демона</h1>
-          <p className="text-gray-400 text-lg">Кликните 3 раза в круг и поймайте Демона</p>
+        <div className="text-center mb-4 sm:mb-8 mt-2 sm:mt-0">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>
+            Гадание на Демона
+          </h1>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4">
+            Кликните 3 раза в круг и поймайте Демона
+          </p>
         </div>
 
         {/* Окно ввода текста */}
-        <QuestionInput 
-          onPrediction={handlePrediction}
-          isAnalyzing={isAnalyzing}
-          finalAnswer={finalAnswer}
-        />
+        <div className="w-full mb-4 sm:mb-6">
+          <QuestionInput 
+            onPrediction={handlePrediction}
+            isAnalyzing={isAnalyzing}
+            finalAnswer={finalAnswer}
+          />
+        </div>
 
         {/* Колесо фортуны */}
-        <FortuneWheel
-          clickCount={clickCount}
-          showDevil={showDevil}
-          devilCaught={devilCaught}
-          devilPosition={devilPosition}
-          isDevilMoving={isDevilMoving}
-          arrowSpeed={arrowSpeed}
-          shouldStop={shouldStop}
-          finalAngle={finalAngle}
-          onCircleClick={handleCircleClick}
-        />
+        <div className="flex-1 flex items-center justify-center w-full">
+          <FortuneWheel
+            clickCount={clickCount}
+            showDevil={showDevil}
+            devilCaught={devilCaught}
+            devilPosition={devilPosition}
+            isDevilMoving={isDevilMoving}
+            arrowSpeed={arrowSpeed}
+            shouldStop={shouldStop}
+            finalAngle={finalAngle}
+            onCircleClick={handleCircleClick}
+          />
+        </div>
       </div>
     </div>
   );
