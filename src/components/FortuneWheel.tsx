@@ -56,7 +56,8 @@ const FortuneWheel = ({
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
             animation: shouldStop ? 'none' : 'spin 20s linear infinite',
-            transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined
+            transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined,
+            transition: shouldStop ? 'transform 2s ease-out' : 'none'
           }}
         >
           {alphabet.map((letter, index) => {
@@ -86,7 +87,8 @@ const FortuneWheel = ({
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
             animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse',
-            transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined
+            transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined,
+            transition: shouldStop ? 'transform 2s ease-out' : 'none'
           }}
         >
           {hourNumbers.map((number, index) => {
@@ -202,7 +204,8 @@ const FortuneWheel = ({
             className="absolute inset-0 overflow-hidden rounded-full"
             style={{
               animation: shouldStop ? 'none' : 'spin 20s linear infinite',
-              transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined
+              transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined,
+              transition: shouldStop ? 'transform 2s ease-out' : 'none'
             }}
           >
             {alphabet.map((letter, index) => {
@@ -232,7 +235,8 @@ const FortuneWheel = ({
             className="absolute inset-0 overflow-hidden rounded-full"
             style={{
               animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse',
-              transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined
+              transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined,
+              transition: shouldStop ? 'transform 2s ease-out' : 'none'
             }}
           >
             {hourNumbers.map((number, index) => {
