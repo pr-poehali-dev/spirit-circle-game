@@ -32,9 +32,7 @@ const Index = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>
             Гадание на Демона
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4">
-            Кликните 3 раза в круг и поймайте Демона
-          </p>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4"></p>
         </div>
 
         {/* Окно ввода текста */}
