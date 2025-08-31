@@ -55,9 +55,7 @@ const FortuneWheel = ({
         <div 
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
-            animation: shouldStop ? 'none' : 'spin 20s linear infinite',
-            transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined,
-            transition: shouldStop ? 'transform 2s ease-out' : 'none'
+            animation: shouldStop ? 'none' : 'spin 20s linear infinite'
           }}
         >
           {alphabet.map((letter, index) => {
@@ -86,9 +84,7 @@ const FortuneWheel = ({
         <div 
           className="absolute inset-0 overflow-hidden rounded-full"
           style={{
-            animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse',
-            transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined,
-            transition: shouldStop ? 'transform 2s ease-out' : 'none'
+            animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse'
           }}
         >
           {hourNumbers.map((number, index) => {
@@ -203,9 +199,7 @@ const FortuneWheel = ({
           <div 
             className="absolute inset-0 overflow-hidden rounded-full"
             style={{
-              animation: shouldStop ? 'none' : 'spin 20s linear infinite',
-              transform: shouldStop ? `rotate(${finalAngle}deg)` : undefined,
-              transition: shouldStop ? 'transform 2s ease-out' : 'none'
+              animation: shouldStop ? 'none' : 'spin 20s linear infinite'
             }}
           >
             {alphabet.map((letter, index) => {
@@ -234,9 +228,7 @@ const FortuneWheel = ({
           <div 
             className="absolute inset-0 overflow-hidden rounded-full"
             style={{
-              animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse',
-              transform: shouldStop ? `rotate(${-finalAngle * 0.75}deg)` : undefined,
-              transition: shouldStop ? 'transform 2s ease-out' : 'none'
+              animation: shouldStop ? 'none' : 'spin 15s linear infinite reverse'
             }}
           >
             {hourNumbers.map((number, index) => {
