@@ -1,7 +1,7 @@
 import { useGameLogic } from '@/hooks/useGameLogic';
 import QuestionInput from '@/components/QuestionInput';
 import FortuneWheel from '@/components/FortuneWheel';
-import Instructions from '@/components/Instructions';
+
 
 const Index = () => {
   const {
@@ -34,12 +34,7 @@ const Index = () => {
           <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4"></p>
         </div>
 
-        {/* Инструкция */}
-        <div className="w-full mb-4 sm:mb-6">
-          <Instructions />
-        </div>
-
-        {/* Окно ввода текста */}
+        {/* Окно ввода текста */
         <div className="w-full mb-4 sm:mb-6">
           <QuestionInput 
             onPrediction={handlePrediction}
