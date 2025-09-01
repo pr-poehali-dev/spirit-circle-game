@@ -46,11 +46,11 @@ export const useGameLogic = () => {
       return;
     }
 
+    // Списываем 13 монет за каждое нажатие СРАЗУ
+    setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
+
     setClickCount(prev => {
       const newCount = prev + 1;
-      
-      // Списываем 13 монет за каждое нажатие
-      setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
       
       if (newCount >= 3) {
         setShowDevil(true);
