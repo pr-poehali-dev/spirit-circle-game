@@ -24,7 +24,7 @@ const Index = () => {
   } = useGameLogic();
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-start p-4 overflow-hidden">
+    <div className="min-h-screen bg-black flex flex-col items-center justify-start p-4 overflow-hidden" style={{paddingTop: '30px'}}>
       {/* Кнопка инструкций в левом верхнем углу */}
       <div className="fixed top-4 left-4 z-50">
         <button

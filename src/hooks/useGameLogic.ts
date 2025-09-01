@@ -112,7 +112,8 @@ export const useGameLogic = () => {
       moveDevil();
     }
     
-    // НЕ списываем монеты здесь - они уже списались при кликах на колесо
+    // Списываем 13 монет за гадание
+    setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
     
     setIsAnalyzing(true);
     setShouldStop(false);
