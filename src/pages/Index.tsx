@@ -133,6 +133,9 @@ const Index = () => {
                   <p className="text-center mt-4 text-lg font-bold text-green-400">Удачи в гадании! 🔮</p>
                   
                   <div className="mt-6 pt-4 border-t border-white/20 text-center">
+                    <p className="text-gray-300 text-sm mb-3 font-['Rubik']">
+                      Возникли вопросы или проблемы? Пишите!
+                    </p>
                     <a 
                       href="https://t.me/Unix77777" 
                       target="_blank" 
