@@ -19,6 +19,16 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
 
   return (
     <div className="mb-4 w-full max-w-2xl mx-auto px-4">
+      {goldCoins === 0 && (
+        <style>
+          {`
+            .limit-exceeded::placeholder {
+              color: #ef4444 !important;
+              opacity: 1;
+            }
+          `}
+        </style>
+      )}
       {/* Мобильная версия - вертикальная */}
       <div className="flex flex-col sm:hidden gap-3 items-center">
         <input
@@ -26,7 +36,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-500' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center`}
+          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center ${goldCoins === 0 ? 'limit-exceeded' : ''}`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
@@ -55,7 +65,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-500' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']`}
+          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] ${goldCoins === 0 ? 'limit-exceeded' : ''}`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
