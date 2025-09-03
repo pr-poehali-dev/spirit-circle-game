@@ -134,7 +134,7 @@ const Index = () => {
                   
                   <div className="mt-6 pt-4 border-t border-white/20 text-center">
                     <a 
-                      href="https://t.me/Unix7777" 
+                      href="https://t.me/Unix77777" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-['Rubik']"
