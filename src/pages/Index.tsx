@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showDonation, setShowDonation] = useState(false);
   
   const {
     clickCount,
@@ -36,11 +37,18 @@ const Index = () => {
         </button>
       </div>
 
-      {/* Счетчик монет в правом верхнем углу */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* Счетчик монет и кнопка благодарности в правом верхнем углу */}
+      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
         <div className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800">
           💰 {goldCoins}
         </div>
+        <button
+          onClick={() => setShowDonation(true)}
+          className="text-white px-2 py-1 sm:px-3 sm:py-2 font-bold text-xs sm:text-sm shadow-lg border-2 border-red-500 rounded-lg bg-red-700 hover:bg-red-600 transition-colors"
+          title="Отблагодарить демона"
+        >
+          😈 Отблагодарить
+        </button>
       </div>
       
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
@@ -126,6 +134,44 @@ const Index = () => {
                   </ul>
                   <p className="text-center mt-4 text-lg font-bold text-green-400">Удачи в гадании! 🔮</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Модальное окно благодарности демону */}
+      {showDonation && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-gray-900 border border-red-500 rounded-lg max-w-md w-full">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-white font-['Rubik']">😈 Отблагодарить демона</h2>
+                <button
+                  onClick={() => setShowDonation(false)}
+                  className="text-white hover:text-gray-300 transition-colors"
+                >
+                  <Icon name="X" size={24} />
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-lg text-gray-300 mb-6 font-['Rubik']">
+                  Добровольная сумма
+                </p>
+                
+                {/* QR код */}
+                <div className="flex justify-center mb-4">
+                  <img 
+                    src="https://cdn.poehali.dev/files/e1ab9534-f520-412c-9be0-789aa727623e.jpg"
+                    alt="QR код для пожертвований"
+                    className="w-48 h-48 object-contain border-2 border-white/20 rounded-lg"
+                  />
+                </div>
+                
+                <p className="text-sm text-gray-400 font-['Rubik']">
+                  Отсканируйте QR код для перевода
+                </p>
               </div>
             </div>
           </div>
