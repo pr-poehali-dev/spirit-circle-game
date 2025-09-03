@@ -167,9 +167,18 @@ const Index = () => {
                   />
                 </div>
                 
-                <p className="text-sm text-gray-400 font-['Rubik']">
+                <p className="text-sm text-gray-400 font-['Rubik'] mb-4">
                   Отсканируйте QR код для перевода
                 </p>
+                
+                <div className="bg-yellow-900/30 border border-yellow-500 rounded-lg p-3">
+                  <p className="text-yellow-400 text-sm font-bold mb-2 font-['Rubik']">
+                    ⚠️ ВНИМАНИЕ !!!
+                  </p>
+                  <p className="text-yellow-300 text-xs font-['Rubik']">
+                    Сумма перевода не отображается в монетах после оплаты. Просто обновите сайт - появится снова 100 монет.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
