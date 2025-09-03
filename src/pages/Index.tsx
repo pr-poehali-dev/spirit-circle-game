@@ -131,6 +131,18 @@ const Index = () => {
                     <li>• Убедитесь, что все участники согласны на участие в подобном процессе.</li>
                   </ul>
                   <p className="text-center mt-4 text-lg font-bold text-green-400">Удачи в гадании! 🔮</p>
+                  
+                  <div className="mt-6 pt-4 border-t border-white/20 text-center">
+                    <a 
+                      href="https://t.me/Unix7777" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-['Rubik']"
+                    >
+                      <Icon name="Send" size={20} />
+                      Связаться в Telegram
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
