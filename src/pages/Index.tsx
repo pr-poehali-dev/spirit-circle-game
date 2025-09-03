@@ -44,7 +44,7 @@ const Index = () => {
         </div>
         <button
           onClick={() => setShowDonation(true)}
-          className="text-white px-2 py-1 sm:px-3 sm:py-2 font-bold text-xs sm:text-sm shadow-lg border-2 border-red-500 rounded-lg bg-red-700 hover:bg-red-600 transition-colors"
+          className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
           title="Отблагодарить демона"
         >
           😈 Отблагодарить
