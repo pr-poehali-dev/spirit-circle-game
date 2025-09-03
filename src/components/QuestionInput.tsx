@@ -5,13 +5,14 @@ interface QuestionInputProps {
   onPrediction: (text: string) => void;
   isAnalyzing: boolean;
   finalAnswer: string;
+  goldCoins: number;
 }
 
-const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer }: QuestionInputProps) => {
+const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: QuestionInputProps) => {
   const [inputText, setInputText] = useState('');
 
   const handleSubmit = () => {
-    if (inputText.trim()) {
+    if (inputText.trim() && goldCoins > 0) {
       onPrediction(inputText);
     }
   };
@@ -24,18 +25,18 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer }: QuestionInput
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder="Задайте свой вопрос..."
-          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center"
+          placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
+          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-400' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-          disabled={isAnalyzing}
+          disabled={isAnalyzing || goldCoins === 0}
         />
         <button
           onClick={handleSubmit}
-          disabled={!inputText.trim() || isAnalyzing}
+          disabled={!inputText.trim() || isAnalyzing || goldCoins === 0}
           className="w-24 px-4 py-2 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik'] disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           style={{
             backdropFilter: 'blur(10px)',
@@ -53,18 +54,18 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer }: QuestionInput
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder="Задайте свой вопрос..."
-          className="w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']"
+          placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
+          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-400' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-          disabled={isAnalyzing}
+          disabled={isAnalyzing || goldCoins === 0}
         />
         <button
           onClick={handleSubmit}
-          disabled={!inputText.trim() || isAnalyzing}
+          disabled={!inputText.trim() || isAnalyzing || goldCoins === 0}
           className="px-6 py-3 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik'] disabled:opacity-50 disabled:cursor-not-allowed"
           style={{
             backdropFilter: 'blur(10px)',

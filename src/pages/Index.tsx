@@ -64,6 +64,7 @@ const Index = () => {
             onPrediction={handlePrediction}
             isAnalyzing={isAnalyzing}
             finalAnswer={finalAnswer}
+            goldCoins={goldCoins}
           />
         </div>
 
