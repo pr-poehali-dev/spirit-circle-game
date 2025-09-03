@@ -190,7 +190,7 @@ const Index = () => {
                   <p className="text-yellow-400 text-sm font-bold mb-2 font-['Rubik']">
                     ⚠️ ВНИМАНИЕ !!!
                   </p>
-                  <p className="text-yellow-300 text-sm font-['Rubik']">
+                  <p className="text-yellow-300 text-base font-['Rubik']">
                     Сумма перевода не отображается в монетах после оплаты. Просто обновите сайт - появится снова 100 монет.
                   </p>
                 </div>
