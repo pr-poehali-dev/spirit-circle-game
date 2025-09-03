@@ -169,7 +169,7 @@ const Index = () => {
               </div>
               
               <div className="text-center">
-                <p className="text-lg text-gray-300 mb-6 font-['Rubik']">
+                <p className="text-2xl text-gray-300 mb-6 font-['Rubik']">
                   Добровольная сумма
                 </p>
                 
