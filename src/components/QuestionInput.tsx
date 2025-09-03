@@ -26,7 +26,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-400' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center`}
+          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-500' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
@@ -55,7 +55,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-400' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']`}
+          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white ${goldCoins === 0 ? 'placeholder-red-500' : 'placeholder-gray-400'} focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']`}
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
