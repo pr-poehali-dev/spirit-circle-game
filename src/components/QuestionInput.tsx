@@ -55,7 +55,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
         >
           {isAnalyzing ? 'Гадаю...' : 'ОК'}
         </button>
-        <PredictionResult finalAnswer={finalAnswer} />
+        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} />
       </div>
 
       {/* Десктопная версия - горизонтальная */}
@@ -84,7 +84,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
         >
           {isAnalyzing ? 'Гадаю...' : 'ОК'}
         </button>
-        <PredictionResult finalAnswer={finalAnswer} />
+        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} />
       </div>
     </div>
   );
