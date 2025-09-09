@@ -176,15 +176,24 @@ const Index = () => {
                 {/* QR код */}
                 <div className="flex justify-center mb-4">
                   <img 
-                    src="https://cdn.poehali.dev/files/e1ab9534-f520-412c-9be0-789aa727623e.jpg"
+                    src="https://cdn.poehali.dev/files/a68c64b1-50e5-4155-8ab1-779dc4315afc.jpg"
                     alt="QR код для пожертвований"
                     className="w-48 h-48 object-contain border-2 border-white/20 rounded-lg"
                   />
                 </div>
                 
-                <p className="text-sm text-gray-400 font-['Rubik'] mb-4">
-                  Отсканируйте QR код для перевода
-                </p>
+                <div className="text-center mb-4">
+                  <div className="bg-blue-600 text-white px-3 py-1 rounded-lg mb-3 inline-flex items-center gap-2 font-['Rubik']">
+                    <span className="text-lg">⚡</span>
+                    <span className="font-bold">Т-Банк</span>
+                  </div>
+                  
+                  <div className="text-sm text-gray-400 font-['Rubik'] space-y-1">
+                    <p>1. Отсканируйте QR-код</p>
+                    <p>2. ИП Паклин СВ</p>
+                    <p>3. введите сумму</p>
+                  </div>
+                </div>
                 
                 <div className="bg-gray-800/30 border border-gray-500 rounded-lg p-3">
                   <p className="text-gray-300 text-base font-['Rubik']">
