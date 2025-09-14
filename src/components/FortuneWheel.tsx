@@ -43,7 +43,7 @@ const FortuneWheel = ({
         {/* Основной круг для мобильной версии */}
         <div 
           ref={circleRef}
-          className="relative w-72 h-72 bg-white rounded-full cursor-pointer select-none shadow-[0_0_30px_rgba(255,255,255,0.3)] border-2 border-black touch-manipulation" 
+          className="relative w-72 h-72 bg-white rounded-full cursor-pointer select-none shadow-[0_0_30px_rgba(255,255,255,0.3)] border-2 border-black touch-manipulation will-change-transform" 
           onClick={onCircleClick}
           style={{
             background: devilCaught 

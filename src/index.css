@@ -214,13 +214,26 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    font-display: swap;
     /* Улучшенная поддержка касаний */
-    touch-action: manipulation;
+    touch-action: pan-x pan-y;
     -webkit-tap-highlight-color: transparent;
+    /* Оптимизация производительности */
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Улучшения для мобильных устройств */
@@ -251,6 +264,16 @@
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* GPU acceleration для анимаций */
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Preload critical fonts */
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
 
   @media (max-width: 640px) {
     /* На мобильных устройствах увеличиваем размеры для удобства касания */
