@@ -54,6 +54,12 @@ const Index = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>
             Гадание на Демона
           </h1>
+          <h2 className="text-lg sm:text-xl text-gray-300 mb-4 font-['Rubik'] px-4">
+            Крутое бесплатное гадание на демоне онлайн с предсказаниями будущего
+          </h2>
+          <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto px-4 font-['Rubik']">
+            Верное гадание на чёртике с точными предсказаниями судьбы. Лучшее бесплатное мистическое гадание на спиритической доске для получения ответов от демона на ваши важные вопросы о любви, работе и будущем.
+          </p>
         </div>
 
 

@@ -1,4 +1,16 @@
+User-agent: *
+Allow: /
+
 User-agent: Googlebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Mail.RU_Bot
+Allow: /
+
+User-agent: SputnikBot
 Allow: /
 
 User-agent: Bingbot
@@ -10,7 +22,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
-
-Sitemap: /sitemap.xml
+Sitemap: https://spirit-circle-game.poehali.dev/sitemap.xml
