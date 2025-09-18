@@ -12,7 +12,7 @@ export const useGameLogic = () => {
   const [arrowSpeed, setArrowSpeed] = useState(4);
   const [shouldStop, setShouldStop] = useState(false);
   const [finalAngle, setFinalAngle] = useState(0);
-  const [goldCoins, setGoldCoins] = useState(36); // Начальное количество монет
+  const [goldCoins, setGoldCoins] = useState(39); // Начальное количество монет
   const circleRef = useRef<HTMLDivElement>(null);
 
   const handleCircleClick = (e: React.MouseEvent) => {
