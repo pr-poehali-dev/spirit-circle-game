@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useGameLogic } from '@/hooks/useGameLogic';
 import QuestionInput from '@/components/QuestionInput';
 import FortuneWheel from '@/components/FortuneWheel';
+import StatusIndicator from '@/components/StatusIndicator';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
@@ -205,6 +206,9 @@ const Index = () => {
           </div>
         </div>
       )}
+
+      {/* Индикатор статуса */}
+      <StatusIndicator />
     </div>
   );
 };
