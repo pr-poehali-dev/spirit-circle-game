@@ -12,7 +12,7 @@ export const useGameLogic = () => {
   const [arrowSpeed, setArrowSpeed] = useState(4);
   const [shouldStop, setShouldStop] = useState(false);
   const [finalAngle, setFinalAngle] = useState(0);
-  const [goldCoins, setGoldCoins] = useState(100); // Начальное количество монет
+  const [goldCoins, setGoldCoins] = useState(0); // Начальное количество монет
   const circleRef = useRef<HTMLDivElement>(null);
 
   const handleCircleClick = (e: React.MouseEvent) => {
@@ -109,8 +109,8 @@ export const useGameLogic = () => {
       moveDevil();
     }
     
-    // Списываем 13 монет за гадание при нажатии ОК
-    setGoldCoins(currentCoins => Math.max(0, currentCoins - 13));
+    // Списываем 25 монет за гадание при нажатии ОК
+    setGoldCoins(currentCoins => Math.max(0, currentCoins - 25));
     
     setIsAnalyzing(true);
     setShouldStop(false);

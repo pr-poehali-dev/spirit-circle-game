@@ -65,6 +65,7 @@ const Index = () => {
             isAnalyzing={isAnalyzing}
             finalAnswer={finalAnswer}
             goldCoins={goldCoins}
+            onInsufficientCoins={() => setShowDonation(true)}
           />
         </div>
 
@@ -157,7 +158,7 @@ const Index = () => {
           <div className="bg-gray-900 border border-red-500 rounded-lg max-w-md w-full">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-white font-['Rubik']">        😈 Отблагодарить демона</h2>
+                <h2 className="text-2xl font-bold text-white font-['Rubik']">        😈 Пополнить монеты</h2>
                 <button
                   onClick={() => setShowDonation(false)}
                   className="text-white hover:text-gray-300 transition-colors"
@@ -167,8 +168,11 @@ const Index = () => {
               </div>
               
               <div className="text-center">
-                <p className="text-2xl text-gray-300 mb-6 font-['Rubik']">
-                  Добровольная сумма
+                <p className="text-2xl text-gray-300 mb-1 font-['Rubik']">
+                  100₽ = 4 гадания
+                </p>
+                <p className="text-sm text-gray-400 mb-6 font-['Rubik']">
+                  Каждое гадание — 25 монет
                 </p>
                 
                 {/* QR код */}

@@ -6,47 +6,43 @@ interface QuestionInputProps {
   isAnalyzing: boolean;
   finalAnswer: string;
   goldCoins: number;
+  onInsufficientCoins: () => void;
 }
 
-const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: QuestionInputProps) => {
+const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onInsufficientCoins }: QuestionInputProps) => {
   const [inputText, setInputText] = useState('');
 
   const handleSubmit = () => {
-    if (inputText.trim() && goldCoins > 0) {
-      onPrediction(inputText);
+    if (!inputText.trim()) return;
+
+    if (goldCoins < 25) {
+      onInsufficientCoins();
+      return;
     }
+
+    onPrediction(inputText);
   };
 
   return (
     <div className="mb-4 w-full max-w-2xl mx-auto px-4">
-      {goldCoins === 0 && (
-        <style>
-          {`
-            .limit-exceeded::placeholder {
-              color: #ef4444 !important;
-              opacity: 1;
-            }
-          `}
-        </style>
-      )}
       {/* Мобильная версия - вертикальная */}
       <div className="flex flex-col sm:hidden gap-3 items-center">
         <input
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center ${goldCoins === 0 ? 'limit-exceeded' : ''}`}
+          placeholder="Задайте свой вопрос..."
+          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] text-center"
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-          disabled={isAnalyzing || goldCoins === 0}
+          disabled={isAnalyzing}
         />
         <button
           onClick={handleSubmit}
-          disabled={!inputText.trim() || isAnalyzing || goldCoins === 0}
+          disabled={!inputText.trim() || isAnalyzing}
           className="w-24 px-4 py-2 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik'] disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           style={{
             backdropFilter: 'blur(10px)',
@@ -64,18 +60,18 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins }: Qu
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder={goldCoins > 0 ? "Задайте свой вопрос..." : "Лимит исчерпан"}
-          className={`w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik'] ${goldCoins === 0 ? 'limit-exceeded' : ''}`}
+          placeholder="Задайте свой вопрос..."
+          className="w-80 lg:w-96 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-300 font-['Rubik']"
           style={{
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-          disabled={isAnalyzing || goldCoins === 0}
+          disabled={isAnalyzing}
         />
         <button
           onClick={handleSubmit}
-          disabled={!inputText.trim() || isAnalyzing || goldCoins === 0}
+          disabled={!inputText.trim() || isAnalyzing}
           className="px-6 py-3 bg-white/20 border border-white/30 rounded-lg text-white font-bold hover:bg-white/30 hover:border-white/50 transition-all duration-300 font-['Rubik'] disabled:opacity-50 disabled:cursor-not-allowed"
           style={{
             backdropFilter: 'blur(10px)',
