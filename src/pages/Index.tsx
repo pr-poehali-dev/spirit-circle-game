@@ -184,7 +184,7 @@ const Index = () => {
                   />
                 </div>
                 
-                <div className="text-center mb-4">
+                <div className="">
                   <div className="bg-blue-600 text-white px-3 py-1 rounded-lg mb-3 inline-flex items-center gap-2 font-['Rubik']">
                     <span className="text-lg">⚡</span>
                     <span className="font-bold">Т-Банк</span>
