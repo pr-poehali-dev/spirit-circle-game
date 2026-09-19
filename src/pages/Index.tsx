@@ -176,7 +176,7 @@ const Index = () => {
                 </p>
                 
                 {/* QR код */}
-                <div className="flex justify-center mb-4">
+                <div className="">
                   <img 
                     src="https://cdn.poehali.dev/files/a68c64b1-50e5-4155-8ab1-779dc4315afc.jpg"
                     alt="QR код для пожертвований"
@@ -191,16 +191,14 @@ const Index = () => {
                   </div>
                   
                   <div className="text-sm text-gray-400 font-['Rubik'] space-y-1">
-                    <p>1. Отсканируйте QR-код</p>
-                    <p>2. ИП Паклин СВ</p>
-                    <p>3. введите сумму</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
                   </div>
                 </div>
                 
                 <div className="bg-gray-800/30 border border-gray-500 rounded-lg p-3">
-                  <p className="text-gray-300 text-base font-['Rubik']">
-                    Сумма перевода не отображается в монетах после оплаты. Просто обновите сайт - появится снова 100 монет.
-                  </p>
+                  <p className="text-gray-300 text-base font-['Rubik']"></p>
                 </div>
               </div>
             </div>
