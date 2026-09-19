@@ -197,7 +197,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="bg-gray-800/30 border border-gray-500 rounded-lg p-3">
+                <div className="">
                   <p className="text-gray-300 text-base font-['Rubik']"></p>
                 </div>
               </div>
