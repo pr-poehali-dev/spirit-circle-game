@@ -11,11 +11,19 @@ interface QuestionInputProps {
 
 const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onInsufficientCoins }: QuestionInputProps) => {
   const [inputText, setInputText] = useState('');
+  const [showInsufficientMessage, setShowInsufficientMessage] = useState(false);
+
+  const handleInputFocus = () => {
+    if (goldCoins < 25) {
+      setShowInsufficientMessage(true);
+    }
+  };
 
   const handleSubmit = () => {
     if (!inputText.trim()) return;
 
     if (goldCoins < 25) {
+      setShowInsufficientMessage(true);
       onInsufficientCoins();
       return;
     }
@@ -37,6 +45,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onIn
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
+          onFocus={handleInputFocus}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
           disabled={isAnalyzing}
         />
@@ -51,7 +60,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onIn
         >
           {isAnalyzing ? 'Гадаю...' : 'ОК'}
         </button>
-        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} />
+        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} showInsufficientMessage={showInsufficientMessage} />
       </div>
 
       {/* Десктопная версия - горизонтальная */}
@@ -66,6 +75,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onIn
             backdropFilter: 'blur(10px)',
             textShadow: '0 0 10px rgba(255,255,255,0.3)'
           }}
+          onFocus={handleInputFocus}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
           disabled={isAnalyzing}
         />
@@ -80,7 +90,7 @@ const QuestionInput = ({ onPrediction, isAnalyzing, finalAnswer, goldCoins, onIn
         >
           {isAnalyzing ? 'Гадаю...' : 'ОК'}
         </button>
-        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} />
+        <PredictionResult finalAnswer={finalAnswer} goldCoins={goldCoins} showInsufficientMessage={showInsufficientMessage} />
       </div>
     </div>
   );

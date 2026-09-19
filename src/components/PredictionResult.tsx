@@ -1,10 +1,11 @@
 interface PredictionResultProps {
   finalAnswer: string;
   goldCoins: number;
+  showInsufficientMessage?: boolean;
 }
 
-const PredictionResult = ({ finalAnswer, goldCoins }: PredictionResultProps) => {
-  if (!finalAnswer && goldCoins > 0) return null;
+const PredictionResult = ({ finalAnswer, goldCoins, showInsufficientMessage = false }: PredictionResultProps) => {
+  if (!finalAnswer && (goldCoins > 0 || !showInsufficientMessage)) return null;
 
   return (
     <div className="inline-block ml-3">
