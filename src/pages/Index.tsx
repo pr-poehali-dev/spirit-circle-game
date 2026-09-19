@@ -175,31 +175,11 @@ const Index = () => {
                   Каждое гадание — 25 монет
                 </p>
                 
-                {/* QR код */}
-                <div className="">
-                  <img 
-                    src="https://cdn.poehali.dev/files/a68c64b1-50e5-4155-8ab1-779dc4315afc.jpg"
-                    alt="QR код для пожертвований"
-                    className=""
-                  />
-                </div>
-                
-                <div className="">
-                  <div className="bg-blue-600 text-white px-3 py-1 rounded-lg mb-3 inline-flex items-center gap-2 font-['Rubik']">
-                    <span className="text-lg">⚡</span>
-                    <span className="font-bold">Т-Банк</span>
-                  </div>
-                  
-                  <div className="text-sm text-gray-400 font-['Rubik'] space-y-1">
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                  </div>
-                </div>
-                
-                <div className="">
-                  <p className="text-gray-300 text-base font-['Rubik']"></p>
-                </div>
+                <button
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors font-['Rubik']"
+                >
+                  Пополнить монеты
+                </button>
               </div>
             </div>
           </div>
