@@ -15,7 +15,7 @@ const PredictionResult = ({ finalAnswer, goldCoins }: PredictionResultProps) => 
           </div>
         )}
         <div className={`font-bold font-['Rubik'] whitespace-nowrap ${goldCoins === 0 ? 'text-sm sm:text-base' : 'text-xs'}`} style={{textShadow: goldCoins === 0 ? 'none' : '0 0 10px rgba(255,255,255,0.7)'}}>
-          {goldCoins === 0 ? 'Лимит исчерпан' : finalAnswer}
+          {goldCoins === 0 ? 'Пополни монеты' : finalAnswer}
         </div>
       </div>
     </div>
