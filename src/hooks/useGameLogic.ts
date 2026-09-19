@@ -145,6 +145,10 @@ export const useGameLogic = () => {
     }, spinTime);
   };
 
+  const addCoins = (amount: number) => {
+    setGoldCoins(currentCoins => currentCoins + amount);
+  };
+
   return {
     clickCount,
     showDevil,
@@ -161,6 +165,7 @@ export const useGameLogic = () => {
     handleCircleClick,
     moveDevil,
     resetGame,
-    handlePrediction
+    handlePrediction,
+    addCoins
   };
 };
