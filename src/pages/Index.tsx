@@ -180,7 +180,7 @@ const Index = () => {
                   <img 
                     src="https://cdn.poehali.dev/files/a68c64b1-50e5-4155-8ab1-779dc4315afc.jpg"
                     alt="QR код для пожертвований"
-                    className="w-48 h-48 object-contain border-2 border-white/20 rounded-lg"
+                    className=""
                   />
                 </div>
                 
