@@ -8,7 +8,7 @@ const PredictionResult = ({ finalAnswer, goldCoins }: PredictionResultProps) => 
 
   return (
     <div className="inline-block ml-3">
-      <div className={`${goldCoins === 0 ? 'bg-white text-red-600 border-2 border-red-500' : 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'} px-2 py-1 rounded-lg shadow-lg`}>
+      <div className={`${goldCoins === 0 ? 'bg-white text-red-600 border-2 border-red-500 flex items-center px-4 py-2 sm:px-6 sm:py-3' : 'bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 py-1'} rounded-lg shadow-lg`}>
         {goldCoins !== 0 && (
           <div className="text-xs text-gray-200 mb-1">
             Ответ:
