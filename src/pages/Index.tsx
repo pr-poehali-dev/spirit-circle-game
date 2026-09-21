@@ -173,11 +173,18 @@ const Index = () => {
                   Каждое гадание — 25 монет
                 </p>
                 
-                <button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors font-['Rubik']"
+                <a
+                  href="https://freekassa.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
                 >
-                  Пополнить монеты
-                </button>
+                  <img
+                    src="https://cdn.freekassa.net/images/logos/banners/f/big-dark-1.png"
+                    alt="FreeKassa"
+                    className="mx-auto rounded-lg"
+                  />
+                </a>
               </div>
             </div>
           </div>
