@@ -51,9 +51,7 @@ const Index = () => {
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
         {/* Главный заголовок */}
         <div className="text-center mb-4 sm:mb-8 mt-2 sm:mt-0">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>
-            Гадание на Демона
-          </h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание - Демона</h1>
         </div>
 
 
