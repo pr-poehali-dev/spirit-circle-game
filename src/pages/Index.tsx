@@ -49,6 +49,14 @@ const Index = () => {
       </div>
       
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+        <a
+          href="/project.zip"
+          download
+          className="mb-3 text-white px-4 py-2 text-sm font-bold border-2 border-gray-400 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+        >
+          Скачать проект
+        </a>
+
         {/* Главный заголовок */}
         <div className="text-center mb-4 sm:mb-8 mt-2 sm:mt-0">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-['Rubik'] px-4" style={{textShadow: '0 0 20px rgba(255,255,255,0.3)'}}>Гадание - Демона</h1>
