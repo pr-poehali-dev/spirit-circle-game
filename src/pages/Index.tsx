@@ -157,7 +157,7 @@ const Index = () => {
           <div className="bg-gray-900 border border-red-500 rounded-lg max-w-md w-full">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-white font-['Rubik']">        😈 Пополнить монеты</h2>
+                <h2 className="text-2xl font-bold text-white font-['Rubik']">😈 Поблагодарите Демона</h2>
                 <button
                   onClick={() => { setShowDonation(false); setShowWidget(false); }}
                   className="text-white hover:text-gray-300 transition-colors"
