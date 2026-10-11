@@ -7,6 +7,7 @@ import Icon from '@/components/ui/icon';
 const Index = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const [showDonation, setShowDonation] = useState(false);
+  const [showWidget, setShowWidget] = useState(false);
   
   const {
     clickCount,
@@ -158,7 +159,7 @@ const Index = () => {
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-white font-['Rubik']">        😈 Пополнить монеты</h2>
                 <button
-                  onClick={() => setShowDonation(false)}
+                  onClick={() => { setShowDonation(false); setShowWidget(false); }}
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   <Icon name="X" size={24} />
@@ -173,11 +174,22 @@ const Index = () => {
                   Каждое гадание — 25 монет
                 </p>
                 
-                <button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors font-['Rubik']"
-                >
-                  Пополнить монеты
-                </button>
+                {showWidget ? (
+                  <iframe
+                    src="https://donat24.ru/w/97"
+                    width="100%"
+                    height="300"
+                    frameBorder="0"
+                    title="Поблагодарите Демона"
+                  />
+                ) : (
+                  <button
+                    onClick={() => setShowWidget(true)}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors font-['Rubik']"
+                  >
+                    Поблагодарите Демона
+                  </button>
+                )}
               </div>
             </div>
           </div>
