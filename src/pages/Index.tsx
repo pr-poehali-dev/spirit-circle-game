@@ -39,7 +39,7 @@ const Index = () => {
       </div>
 
       {/* Счетчик монет и кнопка благодарности в правом верхнем углу */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 flex flex-col items-center">
         <button
           onClick={() => setShowDonation(true)}
           className="text-white px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-lg shadow-lg border-2 border-gray-400 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
@@ -47,6 +47,7 @@ const Index = () => {
         >
           💰 {goldCoins}
         </button>
+        <span className="mt-1 text-xs sm:text-sm text-gray-300 font-['Rubik']">Поблагодарите</span>
       </div>
       
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
